@@ -1,0 +1,107 @@
+@(title: String)(content: Html)
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Emergenesis | emergenesis.com</title>
+
+        <!--<link rel="stylesheet/less" href="css/main.less">
+        <script type="text/javascript" src="js/less.js"></script>-->
+        <link rel="stylesheet" href="/css/main.css">
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/underscore.js"></script>
+        <script type="text/javascript" src="/js/backbone.js"></script>
+        <script type="text/javascript" src="/js/main.js"></script>
+
+        <link rel="icon" type="image/png" href="/favicon.png">
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-column">
+                <div class="header">
+                    <div class="brand">
+                        <a href="/"><img src="/img/emergenesis_logo.png" /></a>
+                        <span>Free the cloud.</span>
+                    </div>
+                    <ul class="nav">
+                        <li class="active"><a href="/"><i class="iconic-home"></i>Home</a></li>
+                        <li><a href="/blog"><i class="iconic-pen"></i>Blog</a></li>
+                        <li><a href="/projects"><i class="iconic-folder_stroke"></i>Projects</a></li>
+                        <li><a href="/about"><i class="iconic-question_mark"></i>About Us</a></li>
+                        <li><a href="/contact"><i class="iconic-at"></i>Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="divider"></div>
+
+                <section>
+                    <h3>Emergenesis</h3>
+                    <p>
+                    Donec ullamcorper quam in metus fermentum placerat.
+                    Vestibulum ante ipsum primis in faucibus orci luctus et
+                    ultrices posuere cubilia Curae; Nullam porta nibh vel dolor
+                    venenatis rutrum. Aenean ipsum neque, auctor non convallis
+                    et, tincidunt vitae enim. Mauris non tempus quam.
+                    <br /><a href="/about">Read more &raquo;</a>
+                    </p>
+                </section>
+
+                <div class="divider"></div>
+
+                <section>
+                    <h3><img src="/img/citeplasm_logo_260x42.png" /></h3>
+                    <p>
+                    Citeplasm is ligula odio ullamcorper metus, vel commodo nunc
+                    lectus in mauris. Aenean volutpat sem sed urna bibendum quis
+                    adipiscing eros molestie. 
+                    <br /><a href="/about">Read more &raquo;</a>
+                    </p>
+                </section>
+                
+                <div class="divider"></div>
+
+                <section>
+                    <h3>We're on the Twitter!</h3>
+                </section>
+            </div>
+            <div class="right-column">
+                @content
+            </div>
+        </div>
+
+        <div class="container footer">
+            <div class="left-column">
+                <div>
+                    <div class="divider"></div>
+                    <p>(c) 2009-2012 Emergenesis, LLC</p>
+                    <p>
+                    Unless otherwise noted, content is provided is licensed under <a href="#">CC-BY-SA 3.0</a>.
+                    </p>
+                </div>
+            </div>
+            <div class="right-column">
+                <section>
+                    <div class="divider"></div>
+                    <ul class="nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><span class="divider"></span></li>
+                        <li><a href="#">Legal</a></li>
+                        <li><span class="divider"></span></li>
+                        <li><a href="http://gplus.to/emergenesis"><i class="small icon-social-google"></i></a></li>
+                        <li><a href="http://www.twitter.com/emergenesis"><i class="small icon-social-twitter"></i></a></li>
+                        <li><a href="http://www.facebook.com/emergenesis"><i class="small icon-social-facebook"></i></a></li>
+                        <li><a href="http://www.youtube.com/emergenesis"><i class="small icon-social-youtube"></i></a></li>
+                        <li><a href="http://www.flickr.com/photos/emergenesis/"><i class="small icon-social-flickr"></i></a></li>
+                        <li><a href="http://www.github.com/emergenesis"><i class="small icon-social-github"></i></a></li>
+                        <li><a href="#"><i class="small icon-social-rss"></i></a></li>
+                        <li><a href="#"><i class="small icon-social-gmail"></i></a></li>
+                    </ul>
+                    <p>Your privacy is important to us. Please review our <a href="#">Privacy Policy</a> for more information.</p>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

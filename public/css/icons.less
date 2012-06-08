@@ -1,0 +1,85 @@
+// SOCIAL ICONS
+// ------------
+/*
+@socialIconPath32: "/img/pace-icons/png";
+
+[class^="icon-social-"],
+[class*=" icon-social-"] {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    background-position: top left;
+    background-image: url("http://placehold.it/32x32");
+}
+
+.icon-social-twitter { background-image: url("@{socialIconPath32}/twitter.png"); }
+.icon-social-google { background-image: url("@{socialIconPath32}/google+.png"); }
+.icon-social-youtube { background-image: url("@{socialIconPath32}/youtube.png"); }
+.icon-social-facebook { background-image: url("@{socialIconPath32}/facebook.png"); }
+.icon-social-github { background-image: url("@{socialIconPath32}/github.png"); }
+.icon-social-flickr { background-image: url("@{socialIconPath32}/flickr.png"); }
+.icon-social-rss { background-image: url("@{socialIconPath32}/rss.png"); }
+*/
+
+@socialIconPath: "/img/linkdeck";
+@socialIconPath16: "@{socialIconPath}/16";
+@socialIconPath32: "@{socialIconPath}/32";
+@socialIconPath64: "@{socialIconPath}/64";
+
+[class^="icon-social-"],
+[class*=" icon-social-"] {
+    display:inline-block; 
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    background-position: top left;
+    background-image: url("http://placehold.it/32x32");
+
+    &.large {
+        width: 64px;
+        height: 64px;
+        line-height: 64px;
+        background-position: top left;
+        background-image: url("http://placehold.it/64x64");
+    }
+
+    &.small {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        background-position: top left;
+        background-image: url("http://placehold.it/16x16");
+    }
+}
+
+.icon-social-twitter { background-image: url("@{socialIconPath32}/twitter.png"); }
+.icon-social-google { background-image: url("@{socialIconPath32}/googleplus.png"); }
+.icon-social-youtube { background-image: url("@{socialIconPath32}/youtube.png"); }
+.icon-social-facebook { background-image: url("@{socialIconPath32}/facebook.png"); }
+.icon-social-github { background-image: url("@{socialIconPath32}/github.png"); }
+.icon-social-flickr { background-image: url("@{socialIconPath32}/flickr.png"); }
+.icon-social-rss { background-image: url("@{socialIconPath32}/rss.png"); }
+.icon-social-gmail { background-image: url("@{socialIconPath32}/gmail.png"); }
+
+.large {
+    &.icon-social-twitter { background-image: url("@{socialIconPath64}/twitter.png"); }
+    &.icon-social-google { background-image: url("@{socialIconPath64}/googleplus.png"); }
+    &.icon-social-youtube { background-image: url("@{socialIconPath64}/youtube.png"); }
+    &.icon-social-facebook { background-image: url("@{socialIconPath64}/facebook.png"); }
+    &.icon-social-github { background-image: url("@{socialIconPath64}/github.png"); }
+    &.icon-social-flickr { background-image: url("@{socialIconPath64}/flickr.png"); }
+    &.icon-social-rss { background-image: url("@{socialIconPath64}/rss.png"); }
+    &.icon-social-gmail { background-image: url("@{socialIconPath64}/gmail.png"); }
+}
+
+.small {
+    &.icon-social-twitter { background-image: url("@{socialIconPath16}/twitter.png"); }
+    &.icon-social-google { background-image: url("@{socialIconPath16}/googleplus.png"); }
+    &.icon-social-youtube { background-image: url("@{socialIconPath16}/youtube.png"); }
+    &.icon-social-facebook { background-image: url("@{socialIconPath16}/facebook.png"); }
+    &.icon-social-github { background-image: url("@{socialIconPath16}/github.png"); }
+    &.icon-social-flickr { background-image: url("@{socialIconPath16}/flickr.png"); }
+    &.icon-social-rss { background-image: url("@{socialIconPath16}/rss.png"); }
+    &.icon-social-gmail { background-image: url("@{socialIconPath16}/gmail.png"); }
+}
+

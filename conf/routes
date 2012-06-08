@@ -1,0 +1,8 @@
+# Homepage
+GET     /                       controllers.Application.index
+
+# Static Resources
+GET     /css/*file              controllers.Assets.at(path="/public/css", file)
+GET     /js/*file              controllers.Assets.at(path="/public/js", file)
+GET     /img/*file              controllers.Assets.at(path="/public/img", file)
+

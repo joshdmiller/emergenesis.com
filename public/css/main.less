@@ -1,0 +1,388 @@
+// MAIN STYLESHEET FOR EMERGENESIS.COM
+// -----------------------------------
+
+// BOOTSTRAP INCLUSIONS
+// --------------------
+
+@import "bootstrap-variables.less";
+@import "bootstrap-mixins.less";
+@import "bootstrap-reset.less";
+@import "bootstrap-type.less";
+@import "bootstrap-navs.less";
+@import "bootstrap-buttons.less";
+@import "bootstrap-sprites.less";
+@import "icons.less";
+@import "iconic.less";
+
+@import "http://fonts.googleapis.com/css?family=Gudea";
+
+// VARIABLES
+// ---------
+@leftWidth: 300px;
+@rightWidth: 640px;
+@columnSpacing: 10px;
+@fullWidth: @leftWidth + @rightWidth + @columnSpacing + 1;
+
+// BASICS
+// ------
+
+body, html {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Gudea', sans-serif;
+}
+
+body {
+    //background: #666;
+    background-image: url("/img/bg.png");
+    background-position: top left;
+    background-repeat: repeat;
+}
+
+// GRID LAYOUT
+// -----------
+
+// Fixed (940px)
+#grid > .core(@gridColumnWidth, @gridGutterWidth);
+
+// Fluid (940px)
+#grid > .fluid(@fluidGridColumnWidth, @fluidGridGutterWidth);
+
+
+// Layouts
+// --------------------------------------------
+
+// Container (centered, fixed-width layouts)
+//.container {
+//  .container-fixed();
+//}
+
+// Fluid layouts (left aligned, with sidebar, min- & max-width content)
+.container-fluid {
+  padding-left: @gridGutterWidth;
+  padding-right: @gridGutterWidth;
+  .clearfix();
+}
+
+// Links
+// -----
+
+a, a:visited {
+  color: @linkColor;
+  text-decoration: none;
+}
+a:hover, a:active {
+  color: @linkColorHover;
+}
+
+// HEADER
+// ------
+
+.header {
+    .brand {
+        margin: 20px;
+        height: 35px;
+
+        span {
+            font-size: 11px;
+            color: @grayLighter;
+            float: right;
+        }
+    }
+
+    .nav {
+        li {
+            a {
+                padding-left: 20px;
+                line-height: 40px;
+                font-size: 16px;
+
+                [class^="iconic-"],
+                [class*=" iconic-"] {
+                    font-size: 18px;
+                    width: 18px;
+                    height: 40px;
+                    line-height: 40px;
+                    margin-right: 5px;
+                }
+            }
+
+            a:hover, a:active {
+                background-color: rgba(1,1,1,.25);
+                color: @white;
+            }
+        }
+    }
+}
+
+
+// FOOTER
+// ------
+
+.footer {
+    overflow: hidden;
+
+    p {
+        font-size: 12px;
+        color: @grayLight;
+        margin-bottom: 3px;
+    }
+    
+    a, a:visited {
+        color: @grayDark;
+    }
+
+    a:hover, a:active {
+        color: @grayLight;
+    }
+
+    .left-column {
+
+        a, a:visited {
+            color: @linkColor;
+        }
+
+        a:hover, a:active {
+            color: @grayDark;
+        }
+        
+        p {
+            margin-left: 20px;
+        }
+    }
+
+    .social {
+        width: 32 * 7 + 35px;
+        height: 35px;
+        margin: 0 auto 20px auto;
+        li {
+            float: left;
+            padding-right: 5px;
+            
+            a:hover, a:active {
+                background: none;
+            }
+        }
+    }
+
+    .right-column {
+        .nav {
+            overflow: hidden;
+            margin-bottom: 20px;
+            li {
+                float: left;
+                margin-right: 15px;
+
+                a, a:visited {
+                    font-size: 12px;
+                    line-height: 16px;
+                    font-weight: bold;
+                    color: @grayDark;
+                }
+
+                a:hover, a:active {
+                    color: @grayLight;
+                    background-color: transparent;
+                }
+
+                .divider {
+                    border-right: 1px solid @grayLight;
+                }
+            }
+        }
+    }
+}
+
+// BODY
+// ----
+
+.container {
+    margin: 0 auto;
+    width: @fullWidth;
+    overflow: hidden;
+    background-position: top-left;
+    background-image: url("/img/background.png");
+    background-repeat: repeat-y;
+    background-color: #FFF;
+
+    .left-column {
+        float: left;
+        width: @leftWidth;
+        color: @grayLighter;
+        font-size: 12px;
+        text-align: left;
+
+        .divider {
+            border-bottom: 1px solid #444;
+            width: @leftWidth - 40px;
+            margin: 20px auto;
+
+        }
+
+        section {
+            padding: 0 20px;
+
+            h3 {
+                margin-bottom: 10px;
+                font-weight: normal;
+            }
+
+            p {
+                margin-bottom: 0;
+            }
+        }
+
+        a:hover, a:active {
+            color: @grayLight;
+        }
+    }
+
+    .right-column {
+        float: right;
+        width: @rightWidth;
+        color: @gray;
+
+        .divider {
+            border-bottom: 1px solid #CCC;
+            width: @rightWidth - 40px;
+            margin: 20px auto;
+        }
+        
+        
+        > section {
+            padding: 0 20px 0 20px;
+            margin-bottom: 20px;
+
+            h1, h2, h3, h4, h5, h6 {
+                margin-bottom: 5px;
+                font-weight: normal;
+                border-bottom: 1px solid #DDD;
+            }
+
+            h1:first-child {
+                margin-top: 20px;
+            }
+
+            .subtitle {
+                margin-bottom: 40px;
+                font-size: 16px;
+                line-height: 20px;
+            }
+        }
+    }
+}
+
+// HOME PAGE
+// ---------
+
+.slider {
+    margin-top: 20px;
+    height: 300px;
+    width: @rightWidth - 52px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    .border-radius(3px);
+
+    .sample-image {
+        height: 100%;
+        width: 100%;
+        background-color: @blue;
+        .border-radius(3px);
+    }
+}
+
+.social-big {
+    .nav {
+        overflow: hidden;
+        margin-left: 2px;
+        li {
+            float: left;
+            margin-right: 12px;
+        }
+
+        li:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.project-summaries {
+    .image {
+        width: 150px;
+        height: 150px;
+        margin: auto;
+        background-image: url("http://placehold.it/290x100");
+        background-position: center center;
+        background-repeat: no-repeat;
+
+        &.citeplasm {
+            background-image: url("/img/citeplasm_200x200.png");
+        }
+
+        &.bigpicturesupport {
+            background-image: url("/img/bigpicturesupport-203x200.png");
+        }
+    }
+
+    .row-fluid {
+        margin-bottom: 40px;
+    }
+}
+
+.about-summaries {
+    .row-fluid {
+        margin-bottom: 20px;
+    }
+}
+
+// BLOG
+// ----
+
+.blog {
+    .entry {
+        margin-bottom: 20px;
+
+        > h1, h2 {
+            a, a:visited {
+                color: @gray;
+            }
+
+            a:hover, a:active {
+                color: @grayLight;
+            }
+        }
+        .metadata {
+            font-size: 13px;
+            color: @grayLight;
+
+            .author {
+                margin-right: 5px;
+            }
+            
+            .date {
+                margin-left: 5px;
+            }
+        }
+
+        .body {
+            margin-top: 20px;
+            p {
+                text-align: justify;
+            }
+        }
+    }
+
+    .pagination {
+        overflow: hidden;
+        .newer {
+            float: left;
+        }
+
+        .older {
+            float: right;
+        }
+    }
+}
+
