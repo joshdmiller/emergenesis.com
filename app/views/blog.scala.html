@@ -1,0 +1,38 @@
+@( posts: List[Post], page: Long, per_page: Long, count: Long )
+
+@import helper._
+@import java.text.SimpleDateFormat
+
+@main( title = "Blog | emergenesis.com" ) {
+    <section>
+        <h1>Blog</h1>
+        <div class="subtitle">The latest news from Emergenesis</div>
+    </section>
+
+    <section class="blog">
+        @posts.map { post =>
+            <div class="entry">
+                <h2><a href="/blog/@post.slug">@post.title</a></h2>
+                <div class="metadata">
+                    <span class="author">@post.author</span> | <span class="date">@((new SimpleDateFormat("dd MMMM yyyy")).format(post.modified_at))</span>
+                </div>
+                <div class="body">
+                    @post.body
+                </div>
+            </div>
+        }
+
+        @if(posts.size == 0) {
+            <b>There are no posts.</b>
+        }
+
+        <div class="row-fluid pagination">
+            @if(page * per_page < count) {
+                <a class="older" href="/blog?page=@(page+1)">Older &raquo;</a>
+            }
+            @if( page > 1 ) {
+                <a class="newer" href="/blog?page=@(page-1)">&laquo; Newer</a>
+            }
+        </div>
+    </section>
+}
