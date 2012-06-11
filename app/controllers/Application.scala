@@ -36,5 +36,6 @@ object Application extends Controller {
      */
     def contact = TODO
     def about = TODO
+    def projects = TODO
 }
 

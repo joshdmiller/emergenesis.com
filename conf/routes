@@ -10,6 +10,9 @@ GET     /contact                controllers.Application.contact
 # About
 GET     /about                  controllers.Application.about
 
+# Projects
+GET     /projects               controllers.Application.projects
+
 # Static Resources
 GET     /css/*file              controllers.Assets.at(path="/public/css", file)
 GET     /js/*file               controllers.Assets.at(path="/public/js", file)
