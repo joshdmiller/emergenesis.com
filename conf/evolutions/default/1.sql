@@ -1,3 +1,7 @@
+# Posts schema
+ 
+# --- !Ups
+
 create table posts ( 
     post_id integer primary key, 
     title varchar(140) not null, 
@@ -6,3 +10,8 @@ create table posts (
     modified_at date, 
     body text
 );
+
+# --- !Downs
+ 
+DROP TABLE task;
+
