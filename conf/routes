@@ -1,6 +1,17 @@
 # Homepage
 GET     /                       controllers.Application.index
 
+# Authentication
+GET     /login                  controllers.Auth.login
+POST    /login                  controllers.Auth.authenticate
+GET     /logout                 controllers.Auth.logout
+
+# Administration
+GET     /admin                  controllers.Application.admin(page: Option[Long] ?= None)
+GET     /admin/new              controllers.Application.newpost
+GET     /admin/edit/:id         controllers.Application.edit(id: Long)
+GET     /admin/delete/:id       controllers.Application.delete(id: Long)
+
 # Blog
 GET     /blog                   controllers.Application.blog(page: Option[Long] ?= None)
 

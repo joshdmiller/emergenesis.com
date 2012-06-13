@@ -3,7 +3,7 @@
 # --- !Ups
 
 create table posts ( 
-    post_id integer primary key, 
+    post_id SERIAL PRIMARY KEY, 
     title varchar(140) not null, 
     slug varchar(140) not null, 
     author varchar(20) not null,
@@ -13,5 +13,5 @@ create table posts (
 
 # --- !Downs
  
-DROP TABLE task;
+DROP TABLE posts;
 

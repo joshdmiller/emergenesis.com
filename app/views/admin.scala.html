@@ -1,0 +1,38 @@
+@( posts: List[Post], page: Long, per_page: Long, count: Long )
+
+@main( title = "Blog | emergenesis.com" ) {
+    <section>
+        <h1>Administration</h1>
+        <div class="subtitle">Create, Edit, Update, and Delete Blog Posts</div>
+    </section>
+
+    <section>
+        <h2>Actions</h2>
+        <ul>
+            <li><a href="/admin/new">Create a new post</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Existing Posts</h2>
+        <ul>
+            @posts.map { post =>
+            <li><a href="/admin/edit/@post.id">@post.title</a> - <a href="/admin/delete/@post.id">Delete</a></li>
+            }
+
+            @if(posts.size == 0) {
+                <li>There are no posts.</li>
+            }
+        </ul>
+
+        <div class="row-fluid pagination">
+            @if(page * per_page < count) {
+                <a class="older" href="/admin?page=@(page+1)">Older &raquo;</a>
+            }
+            @if( page > 1 ) {
+                <a class="newer" href="/admin?page=@(page-1)">&laquo; Newer</a>
+            }
+        </div>
+    </section>
+}
