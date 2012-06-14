@@ -6,6 +6,8 @@ import play.api.mvc._
 import views._
 import models._
 
+import util.control.Breaks._
+
 object Application extends Controller with Secured {
     /**
      * Home page
@@ -34,7 +36,7 @@ object Application extends Controller with Secured {
     /** 
      Admin
      */
-    def admin( page: Option[Long] ) = IsAuthenticated { username => implicit request =>
+    def admin( page: Option[Long] = None ) = IsAuthenticated { username => implicit request =>
         val rpp = 25
         var pn: Long = 1
         val count = Post.count()
@@ -47,6 +49,98 @@ object Application extends Controller with Secured {
         val posts = Post.all( rpp, (pn - 1) * rpp )
         Ok(html.admin( posts, pn, rpp, count ))
     }
+    
+    def newpost = IsAuthenticated { username => implicit request =>
+        Ok(html.newpost())
+    }
+
+    def upload = Action(parse.multipartFormData) { request =>
+        request.body.file("file").map { postfile =>
+            import java.io.{File,BufferedInputStream,DataInputStream,FileInputStream}
+            val filename = postfile.filename 
+            val contentType = postfile.contentType
+
+            val fis = new FileInputStream(postfile.ref.file)
+            val bis = new BufferedInputStream(fis)
+            val dis = new DataInputStream(bis)
+            var keys = scala.collection.mutable.HashMap.empty[String,String]
+            var body = ""
+
+            var currentLine = 1
+            var errorMessage = ""
+            var inHeader = false
+            breakable { while ( dis.available() != 0 ) {
+                val line = dis.readLine()
+                if ( currentLine == 1 ) {
+                    if (line != "---" ) {
+                        errorMessage = "Malformed document. Must have YAML metadata at top."
+                        break
+                    }
+
+                    inHeader = true
+                } else {
+                    if ( inHeader ) {
+                        if ( line == "---" ) {
+                            inHeader = false
+                        } else {
+                            val KeyValue = """^(\w+): "{0,1}([a-zA-Z0-9\-_'\\/&\? \.,:;\[\]\{\}\(\)]+)"{0,1}$""".r
+                            val KeyValue(key, value) = line
+                            keys += (key -> value)
+                        }
+                    } else {
+                        body += line + "\n"
+                    }
+                }
+
+                currentLine += 1
+            } }
+
+            if ( ! keys.contains("title") ) {
+                errorMessage = "Malformed document. YAML must include a 'title' field."
+            }
+
+            if ( errorMessage != "" ) {
+                Redirect(routes.Application.admin(None)).flashing(
+                    "error" -> errorMessage
+                )
+            } else {
+                if (!keys.contains("author_id")) {
+                    keys += ("author_id" -> "1")
+                }
+
+                if (!keys.contains("slug")) {
+                    val title = keys.getOrElse("title", "").trim.toLowerCase
+                    val unsafeChars = """[ '_\\/\.,:;\[\]\{\}\(\)&\?]+""".r
+                    val slug = unsafeChars.replaceAllIn(title, "-")
+                    keys += ("slug" -> slug)
+                }
+
+                val id: Option[Long] = Post.create(
+                    keys.getOrElse("title", ""),
+                    keys.getOrElse("slug", ""),
+                    body,
+                    keys.getOrElse("author", "").toLong
+                )
+
+                id match {
+                    case None => {
+                        Redirect(routes.Application.admin(None)).flashing(
+                            "error" -> "Could not persist to database."
+                        )
+                    }
+                    case Some(lid) => {
+                        Redirect(routes.Application.admin(None)).flashing(
+                            "success" -> "Post created!"
+                        )
+                    }
+                }
+            }
+        }.getOrElse {
+            Redirect(routes.Application.admin(None)).flashing(
+                "error" -> "Missing file"
+            )
+        }
+    }
 
     /**
      TODO
@@ -54,7 +148,6 @@ object Application extends Controller with Secured {
     def contact = TODO
     def about = TODO
     def projects = TODO
-    def newpost = TODO
     def edit( id: Long ) = TODO
     def delete( id: Long ) = TODO
 }

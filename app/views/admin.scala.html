@@ -1,9 +1,20 @@
-@( posts: List[Post], page: Long, per_page: Long, count: Long )
+@( posts: List[Post], page: Long, per_page: Long, count: Long )(implicit flash: Flash)
 
 @main( title = "Blog | emergenesis.com" ) {
     <section>
         <h1>Administration</h1>
         <div class="subtitle">Create, Edit, Update, and Delete Blog Posts</div>
+        
+        @flash.get("success").map { message =>
+            <div class="alert alert-success">
+                @message
+            </div>
+        }
+        @flash.get("error").map { message =>
+            <div class="alert alert-error">
+                @message
+            </div>
+        }
     </section>
 
     <section>

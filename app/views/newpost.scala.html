@@ -1,0 +1,22 @@
+@main( title = "Login | emergenesis.com" ) {
+    <section>
+        @helper.form(action = routes.Application.upload, 'class -> "form-horizontal", 'enctype -> "multipart/form-data") {
+            
+            <h1>Create a new post</h1>
+            
+            <fieldset>
+                <div class="control-group">
+                    <label class="control-label" for="fileInput">Choose File:</label>
+                    <div class="controls">
+                        <input class="input-file" id="fileInput" name="file" type="file">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                    <a href="/admin" class="btn">Cancel</a>
+                </div>
+            </fieldset>
+        }
+    </section>
+}

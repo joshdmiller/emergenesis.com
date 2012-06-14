@@ -1,0 +1,18 @@
+@(post: Post)
+
+@import eu.henkelmann.actuarius.ActuariusTransformer
+@import java.text.SimpleDateFormat
+
+<div class="entry">
+    <h2><a href="/blog/@post.slug">@post.title</a></h2>
+    <div class="metadata">
+        <span class="author">@post.author</span> | <span class="date">@((new SimpleDateFormat("dd MMMM yyyy")).format(post.modified_at))</span>
+    </div>
+    <div class="body">
+        @defining(new ActuariusTransformer()) { transformer =>
+            @defining(new scala.xml.Unparsed(transformer(post.body))) { nodeseq =>
+                @nodeseq
+            }
+        }
+    </div>
+</div>

@@ -1,7 +1,7 @@
 @( posts: List[Post], page: Long, per_page: Long, count: Long )
 
 @import helper._
-@import java.text.SimpleDateFormat
+@import tags._
 
 @main( title = "Blog | emergenesis.com" ) {
     <section>
@@ -11,15 +11,7 @@
 
     <section class="blog">
         @posts.map { post =>
-            <div class="entry">
-                <h2><a href="/blog/@post.slug">@post.title</a></h2>
-                <div class="metadata">
-                    <span class="author">@post.author</span> | <span class="date">@((new SimpleDateFormat("dd MMMM yyyy")).format(post.modified_at))</span>
-                </div>
-                <div class="body">
-                    @post.body
-                </div>
-            </div>
+            @entry(post)
         }
 
         @if(posts.size == 0) {
