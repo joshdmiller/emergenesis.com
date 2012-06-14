@@ -2,6 +2,7 @@ package controllers
 
 import play.api._
 import play.api.mvc._
+import play.api.libs.Files._
 
 import views._
 import models._
@@ -54,7 +55,7 @@ object Application extends Controller with Secured {
         Ok(html.newpost())
     }
 
-    def upload = Action(parse.multipartFormData) { request =>
+    def upload = IsMultipartAuthenticated(parse.multipartFormData) { username => implicit request =>
         request.body.file("file").map { postfile =>
             import java.io.{File,BufferedInputStream,DataInputStream,FileInputStream}
             val filename = postfile.filename 
@@ -175,5 +176,11 @@ trait Secured {
   def IsAuthenticated(f: => String => Request[AnyContent] => Result) = Security.Authenticated(username, onUnauthorized) { user =>
     Action(request => f(user)(request))
   }
+
+  def IsMultipartAuthenticated(p: BodyParser[MultipartFormData[TemporaryFile]])(f: => String => 
+  Request[MultipartFormData[TemporaryFile]] => Result) = 
+  Security.Authenticated(username, onUnauthorized) { user => 
+    Action(p)(request => f(user)(request)) 
+  } 
 }
 
