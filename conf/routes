@@ -10,11 +10,12 @@ GET     /logout                 controllers.Auth.logout
 GET     /admin                  controllers.Application.admin(page: Option[Long] ?= None)
 GET     /admin/new              controllers.Application.newpost
 POST    /admin/upload           controllers.Application.upload
-GET     /admin/edit/:id         controllers.Application.edit(id: Long)
 GET     /admin/delete/:id       controllers.Application.delete(id: Long)
+POST    /admin/delete/:id       controllers.Application.deleteconfirm(id: Long)
 
 # Blog
 GET     /blog                   controllers.Application.blog(page: Option[Long] ?= None)
+GET     /blog/:slug               controllers.Application.show(slug: String)
 
 # Contact
 GET     /contact                controllers.Application.contact

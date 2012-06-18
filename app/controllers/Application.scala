@@ -143,14 +143,43 @@ object Application extends Controller with Secured {
         }
     }
 
+    def delete( id: Long ) = IsAuthenticated { username => implicit request =>
+        val post = Post.find(id)
+        Ok(html.deletepost(post))
+    }
+
+    def deleteconfirm( id: Long ) = IsAuthenticated { username => implicit request =>
+        Post.delete(id) match {
+            case 1 => {
+                Redirect(routes.Application.admin(None)).flashing(
+                    "success" -> "Post deleted."
+                )
+            }
+            case _ => {
+                Redirect(routes.Application.admin(None)).flashing(
+                    "error" -> "Something went wrong."
+                )
+            }
+        }
+    }
+    
+    def show( slug: String ) = Action { request =>
+        Post.findBySlug(slug) match {
+            case Some(p) => {
+                Ok(html.show(p))
+            }
+            case None => {
+                NotFound("Post does not exist.")
+            }
+        }
+    }
+    
     /**
      TODO
      */
     def contact = TODO
     def about = TODO
     def projects = TODO
-    def edit( id: Long ) = TODO
-    def delete( id: Long ) = TODO
 }
 
 /**

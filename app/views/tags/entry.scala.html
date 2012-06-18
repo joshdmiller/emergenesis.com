@@ -1,10 +1,15 @@
-@(post: Post)
+@(post: Post, summary: Boolean)
 
 @import eu.henkelmann.actuarius.ActuariusTransformer
 @import java.text.SimpleDateFormat
 
+@if(summary) {
 <div class="entry">
-    <h2><a href="/blog/@post.slug">@post.title</a></h2>
+    <h2><a href="@routes.Application.show(post.slug)">@post.title</a></h2>
+} else {
+<section class="entry">
+    <h1>@post.title</h1>
+}
     <div class="metadata">
         <span class="author">@post.author</span> | <span class="date">@((new SimpleDateFormat("dd MMMM yyyy")).format(post.modified_at))</span>
     </div>

@@ -11,7 +11,7 @@
 
     <section class="blog">
         @posts.map { post =>
-            @entry(post)
+            @entry(post, true)
         }
 
         @if(posts.size == 0) {

@@ -1,0 +1,27 @@
+@(post: Post)
+
+@import java.text.SimpleDateFormat
+
+@main( title = "Delete a Post | emergenesis.com" ) {
+    <section>
+        @helper.form(action = routes.Application.deleteconfirm(post.id), 'class -> "form-horizontal") {
+            
+            <h1>Delete</h1>
+
+            <fieldset>
+                <label>Are you sure you want to delete this post?</label>
+                
+                <dl class="dl-horizontal">
+                    <dt>Title</dt><dd>@post.title</dd>
+                    <dt>Author</dt><dd>@post.author</dd>
+                    <dt>Last Modified</dt><dd>@((new SimpleDateFormat("dd MMMM yyyy")).format(post.modified_at))</dd>
+                </dl>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <a href="/admin" class="btn">Cancel</a>
+                </div>
+            </fieldset>
+        }
+    </section>
+}

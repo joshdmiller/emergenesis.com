@@ -1,0 +1,10 @@
+@( post: Post )
+
+@import helper._
+@import tags._
+
+@main( title = post.title + " | emergenesis.com" ) {
+    <section class="blog">
+        @entry(post, false)
+    </section>
+}

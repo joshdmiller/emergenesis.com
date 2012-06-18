@@ -39,4 +39,24 @@ object Post {
             .on("t" -> title, "s" -> slug, "m" -> new Date(), "b" -> body, "u" -> author)
             .executeInsert()
     }
+
+    def find(id: Long): Post = DB.withConnection { implicit c =>
+        SQL("SELECT p.*, u.fullname as author FROM posts p INNER JOIN users u ON p.user_id = u.user_id WHERE p.post_id = {id}")
+            .on("id" -> id).as(post *).head
+    }
+
+    def delete(id: Long): Int = DB.withConnection { implicit c =>
+        SQL("DELETE FROM posts WHERE post_id = {id}").on("id" -> id).executeUpdate()
+    }
+
+    def findBySlug(slug: String): Option[Post] = DB.withConnection { implicit c =>
+        val results = SQL("SELECT p.*, u.fullname as author FROM posts p INNER JOIN users u ON p.user_id = u.user_id WHERE p.slug = {slug} LIMIT 1")
+            .on("slug" -> slug).as(post *)
+
+        if (results.length > 0) {
+            Some(results.head)
+        } else {
+            None
+        }
+    }
 }

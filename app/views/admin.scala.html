@@ -29,7 +29,7 @@
         <h2>Existing Posts</h2>
         <ul>
             @posts.map { post =>
-            <li><a href="/admin/edit/@post.id">@post.title</a> - <a href="/admin/delete/@post.id">Delete</a></li>
+                <li><a href="@routes.Application.show(post.slug)">@post.title</a> - <a href="@routes.Application.delete(post.id)">Delete</a></li>
             }
 
             @if(posts.size == 0) {
