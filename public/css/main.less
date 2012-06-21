@@ -13,6 +13,8 @@
 @import "bootstrap-sprites.less";
 @import "bootstrap-forms.less";
 @import "bootstrap-alerts.less";
+@import "bootstrap-thumbnails.less";
+@import "bootstrap-wells.less";
 @import "icons.less";
 @import "iconic.less";
 
@@ -41,6 +43,7 @@ body {
     background-image: url("/img/bg.png");
     background-position: top left;
     background-repeat: repeat;
+    text-align: justify;
 }
 
 // GRID LAYOUT
@@ -253,18 +256,13 @@ a:hover, a:active {
         }
         
         
-        > section {
-            padding: 0 20px 0 20px;
-            margin-bottom: 20px;
+        > section, > header {
+            margin: 0 20px 20px 20px;
 
-            h1, h2, h3, h4, h5, h6 {
+            h2, h3, h4, h5, h6 {
                 margin-bottom: 5px;
                 font-weight: normal;
                 border-bottom: 1px solid #DDD;
-            }
-
-            h1:first-child {
-                margin-top: 20px;
             }
 
             .subtitle {
@@ -272,6 +270,11 @@ a:hover, a:active {
                 font-size: 16px;
                 line-height: 20px;
             }
+        }
+
+        > header {
+            margin-top: 20px;
+            margin-bottom: 40px;
         }
     }
 }
@@ -386,5 +389,39 @@ a:hover, a:active {
             float: right;
         }
     }
+}
+
+// PROJECTS
+// --------
+
+.projects-list {
+    .row-fluid {
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid @grayLighter;
+        > .span4 {
+            text-align: center;
+        }
+    }
+
+    .row-fluid:last-child {
+        border-bottom: none;
+    }
+
+    h2 {
+        margin-bottom: 40px !important;
+    }
+
+    h3 {
+        border: none !important;
+    }
+
+    p {
+        text-align: left;
+    }
+
+    img {
+    }
+
 }
 

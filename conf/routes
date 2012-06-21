@@ -15,7 +15,7 @@ POST    /admin/delete/:id       controllers.Application.deleteconfirm(id: Long)
 
 # Blog
 GET     /blog                   controllers.Application.blog(page: Option[Long] ?= None)
-GET     /blog/:slug               controllers.Application.show(slug: String)
+GET     /blog/:slug             controllers.Application.show(slug: String)
 
 # Contact
 GET     /contact                controllers.Application.contact
@@ -25,6 +25,9 @@ GET     /about                  controllers.Application.about
 
 # Projects
 GET     /projects               controllers.Application.projects
+GET     /citeplasm              controllers.Application.citeplasm
+GET     /semantic-web           controllers.Application.semanticweb
+GET     /bigpicturesupport      controllers.Application.bigpicturesupport
 
 # Static Resources
 GET     /css/*file              controllers.Assets.at(path="/public/css", file)

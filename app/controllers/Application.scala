@@ -173,13 +173,26 @@ object Application extends Controller with Secured {
             }
         }
     }
+
+    /**
+     Projects action
+     */
+    def projects = Action { request =>
+        Ok(html.projects())
+    }
+    def citeplasm = Action { request =>
+        Ok(html.citeplasm())
+    }
+    def semanticweb = Action { request =>
+        Ok(html.semanticweb())
+    }
+    def bigpicturesupport = TODO
     
     /**
      TODO
      */
-    def contact = TODO
     def about = TODO
-    def projects = TODO
+    def contact = TODO
 }
 
 /**
