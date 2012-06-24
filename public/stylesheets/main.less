@@ -1,0 +1,161 @@
+// MAIN STYLES
+// This is the main stylesheet for emergenesis.com.
+// ------------------------------------------------
+
+// BOOTSTRAP INCLUSIONS
+// --------------------
+
+@import "bootstrap/reset.less";
+@import "bootstrap/variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "bootstrap/mixins.less";
+@import "bootstrap/responsive-utilities.less";
+@import "bootstrap/scaffolding.less";
+@import "bootstrap/grid.less";
+@import "bootstrap/layouts.less";
+@import "bootstrap/type.less";
+@import "bootstrap/navs.less";
+
+
+// EMERGENESIS INCLUSIONS
+// ----------------------
+
+@import "sprites.less";
+
+// VARIABLE OVERRIDES
+// ------------------
+
+// misc
+@emergenesisBlue: #4c9bbc;
+
+// Navbar tweaks
+@navbarHeight: 60px;
+@navbarBackground: @grayLighter;
+@navbarBackgroundHighlight: @navbarBackground;
+@navbarText: @grayDark;
+@navbarBrandColor: @grayDark;
+@navbarLinkColor: @grayDark;
+@navbarLinkColorHover: @emergenesisBlue;
+
+// Headlines
+@headlineBackground: @emergenesisBlue;
+
+
+// BODY STYLES
+// -----------
+
+body {
+    padding-top: @navbarHeight;
+    background: @grayDarker;
+}
+
+.main {
+    background: @grayDark;
+}
+
+
+// NAVBAR
+// ------
+
+@import "navbar.less";
+@import "responsive-navbar.less";
+
+
+// HEADLINE
+// --------
+
+.headline {
+  padding: 60px 0;
+  background-color: @headlineBackground;
+  
+  h1 {
+    margin-bottom: 0;
+    font-size: 50px;
+    line-height: 1;
+    text-align: center;
+    color: @heroUnitHeadingColor;
+    letter-spacing: -1px;
+  }
+  
+  p {
+      margin-top: 20px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: @baseLineHeight * 1.5;
+    color: @heroUnitLeadColor;
+  }
+}
+
+.headline-arrow {
+    width: 0; 
+    height: 0; 
+    margin: 0 auto 30px auto;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid @headlineBackground;
+}
+
+
+// FOOTER
+// ------
+
+.footer {
+    border-top: 1px solid @grayDarker;
+    .box-shadow(~"0 -3px 6px rgba(0,0,0,.25)");
+    color: @grayLight;
+    padding: 20px 0;
+    margin-bottom: 20px;
+
+    .nav {
+        float: left;
+
+        li {
+            float: left;
+            margin-right: 20px;
+
+            a, a:visited {
+                color: @white;
+                font-size: 12px;
+            }
+
+            a:hover, a:active {
+                background-color: transparent;
+                color: @gray;
+            }
+
+            .divider {
+                border-right: 1px solid @gray;
+                border-left: 1px solid @grayDarker;
+            }
+        }
+
+    }
+
+    .nav.social {
+        float: right;
+
+        li {
+            line-height: 16px;
+            margin-right: 0;
+            margin-left: 15px;
+
+            span {
+                margin-left: 5px !important;
+            }
+        }
+    }
+}
+
+
+// RESPONSIVE MEDIA QUERIES
+// ------------------------
+
+// Phones to portrait tablets and narrow desktops
+@import "responsive-767px-max.less";
+
+// Tablets to regular desktops
+@import "responsive-768px-979px.less";
+
+// Large desktops
+@import "responsive-1200px-min.less";
+
+

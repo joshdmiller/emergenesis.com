@@ -1,0 +1,36 @@
+// SPRITES
+// Icons and fonts for navs and buttons, etc.
+// ------------------------------------------
+
+
+// VARIABLES
+// ---------
+
+@socialIconBasePath: "/assets/images/linkdeck";
+@socialIconSmallPath: "@{socialIconBasePath}/16x16";
+
+
+// ICONS
+// -----
+
+[class^="icon-"],
+[class*=" icon-"] {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  .ie7-restore-right-whitespace();
+  line-height: 16px;
+  vertical-align: bottom;
+  background-image: url("http://placehold.it/16x16");
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.icon-twitter { background-image: url("@{socialIconSmallPath}/twitter.png"); }
+.icon-googleplus { background-image: url("@{socialIconSmallPath}/googleplus.png"); }
+.icon-facebook { background-image: url("@{socialIconSmallPath}/facebook.png"); }
+.icon-rss { background-image: url("@{socialIconSmallPath}/rss.png"); }
+.icon-youtube { background-image: url("@{socialIconSmallPath}/youtube.png"); }
+.icon-flickr { background-image: url("@{socialIconSmallPath}/flickr.png"); }
+.icon-github { background-image: url("@{socialIconSmallPath}/github.png"); }
+
