@@ -14,6 +14,7 @@
 @import "bootstrap/layouts.less";
 @import "bootstrap/type.less";
 @import "bootstrap/navs.less";
+@import "bootstrap/buttons.less";
 
 
 // EMERGENESIS INCLUSIONS
@@ -99,11 +100,11 @@ body {
 // ------
 
 .footer {
+    margin-bottom: 20px;
     border-top: 1px solid @grayDarker;
     .box-shadow(~"0 -3px 6px rgba(0,0,0,.25)");
     color: @grayLight;
     padding: 20px 0;
-    margin-bottom: 20px;
 
     .nav {
         float: left;
@@ -142,6 +143,61 @@ body {
                 margin-left: 5px !important;
             }
         }
+    }
+}
+
+// MAIN
+// ----
+
+.main {
+    padding-bottom: 30px;
+}
+
+
+// HOME PAGE
+// ---------
+
+.home-highlights {
+    .content {
+        padding-left: 60px;
+        background-image: url(http://placehold.it/50x70);
+        background-position: top left;
+        background-repeat: no-repeat;
+        
+        h3 {
+            color: @white;
+        }
+
+        p {
+            color: @grayLight;
+        }
+
+        .readmore {
+            text-align: right;
+        }
+
+        &.whatwedo {
+            .icon-box-large();
+            background-position: 9px 0;
+        }
+
+        &.about {
+            background-image: url(/assets/images/emergenesis_gray_50x50.png);
+        }
+
+        &.citeplasm {
+            background-image: url(/assets/images/citeplasm_gray_50x50.png);
+        }
+
+        &.semantic {
+            background-image: url(/assets/images/semanticweb_gray_50x53.png);
+        }
+    }
+
+    .divider {
+        border-top: 1px solid @grayDarker;
+        border-bottom: 1px solid @gray;
+        margin: 30px 0;
     }
 }
 
