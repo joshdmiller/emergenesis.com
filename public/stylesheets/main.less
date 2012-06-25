@@ -109,8 +109,8 @@ body {
 
 .footer {
     margin-bottom: 20px;
-    border-top: 1px solid @grayDarker;
-    .box-shadow(~"0 -3px 6px rgba(0,0,0,.25)");
+    border-top: 1px solid #1a1a1a;
+    .box-shadow(~"0 -3px 6px rgba(0,0,0,.35)");
     color: @grayLight;
     padding: 20px 0;
 
@@ -158,14 +158,50 @@ body {
 // ----
 
 .main {
-    padding-bottom: 30px;
+    padding-bottom: 60px;
+    background: @grayDark;
+
+    .divider {
+        border-top: 1px solid @grayDarker;
+        border-bottom: 1px solid @gray;
+        margin: 30px 0;
+    }
+
+    .body {
+        margin-bottom: 30px;
+        padding: 20px;
+        background: @grayLighter;
+        .border-radius(4px);
+
+        .divider {
+            margin: 10px 0 20px 0;
+            border-top: 1px solid @gray;
+            border-bottom: 1px solid @white;
+        }
+    }
+
+    .container {
+        
+        > h1, > h2, > h3 {
+            color: @white;
+        }
+
+        > h1 {
+            margin: 30px 0;
+        }
+
+        > p {
+            color: @grayLighter;
+        }
+    }
+
 }
 
 
 // HOME PAGE
 // ---------
 
-.home-highlights {
+.home-highlights, .projects-list {
     .content {
         padding-left: 60px;
         background-image: url(http://placehold.it/50x70);
@@ -174,14 +210,21 @@ body {
         
         h3 {
             color: @white;
+            line-height: 18px;
         }
 
         p {
+            margin-top: 10px;
             color: @grayLight;
         }
 
+        a:hover, a:active {
+            text-decoration: none;
+            color: @white;
+        }
+
         .readmore {
-            text-align: right;
+            margin-top: 10px;
         }
 
         &.whatwedo {
@@ -200,12 +243,21 @@ body {
         &.semantic {
             background-image: url(/assets/images/semanticweb_gray_50x53.png);
         }
+
+        &.bps {
+            background-image: url(/assets/images/bps_gray_50x49.png);
+        }
     }
 
-    .divider {
-        border-top: 1px solid @grayDarker;
-        border-bottom: 1px solid @gray;
-        margin: 30px 0;
+}
+
+
+// PROJECTS
+// --------
+
+.projects-list {
+    .content {
+        margin-bottom: 30px;
     }
 }
 
