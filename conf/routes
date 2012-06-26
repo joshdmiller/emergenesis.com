@@ -8,6 +8,7 @@ GET     /                           controllers.Application.index
 # Blog
 GET     /blog                       controllers.Blog.index
 GET     /blog/:slug                 controllers.Blog.show(slug: String)
+GET     /rss                       controllers.Blog.rss
 
 # Projects
 GET     /projects                   controllers.Projects.index
