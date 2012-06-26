@@ -15,6 +15,10 @@
 @import "bootstrap/type.less";
 @import "bootstrap/navs.less";
 @import "bootstrap/buttons.less";
+@import "bootstrap/wells.less";
+@import "bootstrap/thumbnails.less";
+@import "bootstrap/progress-bars.less";
+@import "bootstrap/tables.less";
 
 
 // EMERGENESIS INCLUSIONS
@@ -167,22 +171,9 @@ body {
         margin: 30px 0;
     }
 
-    .body {
-        margin-bottom: 30px;
-        padding: 20px;
-        background: @grayLighter;
-        .border-radius(4px);
-
-        .divider {
-            margin: 10px 0 20px 0;
-            border-top: 1px solid @gray;
-            border-bottom: 1px solid @white;
-        }
-    }
-
     .container {
         
-        > h1, > h2, > h3 {
+        h1, h2, h3 {
             color: @white;
         }
 
@@ -190,9 +181,40 @@ body {
             margin: 30px 0;
         }
 
-        > p {
+        p {
             color: @grayLighter;
         }
+
+        .body, .well {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: @grayLighter;
+            .border-radius(4px);
+
+            .divider {
+                margin: 10px 0 20px 0;
+                border-top: 1px solid @gray;
+                border-bottom: 1px solid @white;
+            }
+
+            p {
+                color: @textColor;
+            }
+
+            h1, h2, h3, h4, h5 {
+                color: @textColor;
+            }
+        }
+
+        .thumbnails {
+            .thumbnail, .thumbnail:visited {
+                border-color: @linkColor;
+            }
+            .thumbnail:hover, .thumbnail:active {
+                border-color: #F89406;
+            }
+        }
+
     }
 
 }
@@ -259,6 +281,42 @@ body {
     .content {
         margin-bottom: 30px;
     }
+}
+
+.roadmap {
+    thead th {
+        color: @white;
+    }
+
+    td {
+        background: @white;
+    }
+}
+
+.project.thumbnails {
+    margin-top: 30px;
+}
+
+
+// PROGRESS BARS
+// -------------
+
+.progress {
+    > .bar {
+        .background-size(40px 40px);
+
+        -webkit-animation: progress-bar-stripes 2s linear infinite;
+           -moz-animation: progress-bar-stripes 2s linear infinite;
+            -ms-animation: progress-bar-stripes 2s linear infinite;
+             -o-animation: progress-bar-stripes 2s linear infinite;
+                animation: progress-bar-stripes 2s linear infinite;
+    }
+
+    &.concept > .bar { width: 5%; #gradient > .striped(#ee5f5b); }
+    &.design  > .bar { width: 25%; #gradient > .striped(lighten(@orange, 15%)); }
+    &.dev     > .bar { width: 50%; #gradient > .striped(#62c462); }
+    &.test    > .bar { width: 75%; #gradient > .striped(#62c462); }
+    &.live    > .bar { width: 100%; #gradient > .striped(#5bc0de); }
 }
 
 

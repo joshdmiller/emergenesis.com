@@ -9,7 +9,10 @@ object Projects extends Controller {
     Ok(views.html.projects())
   }
   
-  def citeplasm = TODO
+  def citeplasm = Action {
+    Ok(views.html.citeplasm())
+  }
+
   def bps = TODO
   def semanticweb = TODO
   
