@@ -39,6 +39,7 @@
 // misc
 @emergenesisBlue: #4c9bbc;
 @sansFontFamily: 'Open Sans';
+@linkColorHover: @btnWarningBackground;
 
 // Navbar tweaks
 @navbarHeight: 60px;
@@ -51,6 +52,7 @@
 
 // Headlines
 @headlineBackground: @emergenesisBlue;
+@headlineBackgroundDark: #2c7b9c;
 
 
 // BODY STYLES
@@ -78,7 +80,8 @@ body {
 
 .headline {
   padding: 60px 0;
-  background-color: @headlineBackground;
+  //background-color: @headlineBackground;
+  #gradient > .vertical(@headlineBackgroundDark, @headlineBackground);
   
   h1 {
     margin: 0 !important;
@@ -132,7 +135,7 @@ body {
 
             a:hover, a:active {
                 background-color: transparent;
-                color: @gray;
+                color: @linkColorHover;
             }
 
             .divider {
@@ -172,6 +175,10 @@ body {
     }
 
     .container {
+
+        .row.first {
+            margin-top: 60px;
+        }
         
         h1, h2, h3 {
             color: @white;
@@ -217,6 +224,31 @@ body {
 
     }
 
+    .nav.nav-menu {
+        border-top: 1px solid @black;
+        border-bottom: 1px solid @gray;
+        margin-bottom: 60px;
+
+        a {
+            padding: 15px 0;
+            border-top: 1px solid @gray;
+            border-bottom: 1px solid @black;
+            text-shadow: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        a:hover, a:active, li.current a {
+            background-color: transparent;
+            color: #F89406;
+        }
+    }
+
+    .figure {
+        margin: 20px 0;
+        text-align: center;
+    }
+
 }
 
 
@@ -231,13 +263,13 @@ body {
         background-repeat: no-repeat;
         
         h3 {
-            color: @white;
+            color: @grayLight;
             line-height: 18px;
         }
 
         p {
             margin-top: 10px;
-            color: @grayLight;
+            color: @grayLighter;
         }
 
         a:hover, a:active {
@@ -271,6 +303,18 @@ body {
         }
     }
 
+}
+
+
+// SECTIONS
+// --------
+
+.section {
+    margin-bottom: 30px;
+
+    .divider {
+        margin: 10px 0 20px 0;
+    }
 }
 
 

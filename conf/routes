@@ -18,6 +18,8 @@ GET     /semantic-web               controllers.Projects.semanticweb
 
 # About
 GET     /about                      controllers.Application.about
+GET     /about/foundation           controllers.Application.foundation
+GET     /about/open-source          controllers.Application.opensource
 
 # Contact
 GET     /contact                    controllers.Application.contact

@@ -9,9 +9,19 @@ object Application extends Controller {
     Ok(views.html.index())
   }
 
-  def contact = TODO
+  def about = Action {
+    Ok(views.html.about())
+  }
 
-  def about = TODO
+  def foundation = Action {
+    Ok(views.html.foundation())
+  }
+
+  def opensource = Action {
+    Ok(views.html.opensource())
+  }
+
+  def contact = TODO
   
   def legal = TODO
   
