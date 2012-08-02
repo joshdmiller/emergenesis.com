@@ -1,0 +1,99 @@
+// main.less
+// The primary stylesheet of emergenesis.com
+// -----------------------------------------
+
+
+// Bootstrap Includes
+// ------------------
+
+@import "bootstrap/reset.less";
+@import "bootstrap/variables.less";
+@import "bootstrap/mixins.less";
+@import "bootstrap/type.less";
+
+
+// Body reset
+// ----------
+
+body {
+  margin: 0;
+  font-family: @baseFontFamily;
+  font-size: @baseFontSize;
+  line-height: @baseLineHeight;
+  color: @textColor;
+  background-color: @bodyBackground;
+}
+
+
+// Links
+// -----
+
+a {
+  color: @linkColor;
+  text-decoration: none;
+}
+a:hover {
+  color: @linkColorHover;
+  text-decoration: underline;
+}
+
+
+// The Grid
+// ---------
+
+// Fixed (940px)
+#grid > .core(@gridColumnWidth, @gridGutterWidth);
+
+// Fluid (940px)
+#grid > .fluid(@fluidGridColumnWidth, @fluidGridGutterWidth);
+
+
+//
+// Layouts
+// Fixed-width and fluid (with sidebar) layouts
+// --------------------------------------------
+
+
+// Container (centered, fixed-width layouts)
+.container {
+  .container-fixed();
+}
+
+// Fluid layouts (left aligned, with sidebar, min- & max-width content)
+.container-fluid {
+  padding-right: @gridGutterWidth;
+  padding-left: @gridGutterWidth;
+  .clearfix();
+}
+
+
+// Utility Classes
+// ---------------
+
+// Quick floats
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+
+// Toggling content
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+// Visibility
+.invisible {
+  visibility: hidden;
+}
+
+
+// Emergenesis Includes
+// --------------------
+
+@import "responsive.less";
+
