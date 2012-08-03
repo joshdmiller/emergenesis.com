@@ -98,20 +98,17 @@ a:hover {
 }
 
 
-// Emergenesis Includes
-// --------------------
-
-@import "responsive.less";
-
-
 // Theme
 // -----
 
 .header-bar {
-    width: 100%;
-    height: 5px;
-    margin-bottom: 40px;
-    background: @fuscia;
+
+    .header-bar-inner {
+        width: 100%;
+        height: 5px;
+        margin-bottom: 40px;
+        background: @fuscia;
+    }
 }
 
 
@@ -224,7 +221,7 @@ h1 {
 }
 
 h2 {
-    font-size: 16px;
+    font-size: 20px;
     text-transform: uppercase;
     border-bottom: 1px solid @grayLighter;
 }
@@ -233,4 +230,11 @@ p {
     font-size: 18px;
     line-height: 28px;
 }
+
+
+// Emergenesis Includes
+// --------------------
+
+@import "responsive.less";
+
 
