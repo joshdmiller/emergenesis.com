@@ -29,6 +29,8 @@
 @orange:                #f89406;
 @pink:                  #c3325f;
 @purple:                #7a43b6;
+@fuscia:                #AD235E;
+@fusciaLight:           #CD437E;
 
 
 // Scaffolding
@@ -45,7 +47,7 @@
 
 // Typography
 // -------------------------
-@sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@sansFontFamily:        "Numans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 @serifFontFamily:       Georgia, "Times New Roman", Times, serif;
 @monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
 
@@ -91,6 +93,9 @@
 @btnInverseBackground:              @gray;
 @btnInverseBackgroundHighlight:     @grayDarker;
 
+@btnEmergenesisBackground:          @fuscia;
+@btnEmergenesisBackgroundHighlight: @fusciaLight;
+
 
 // Forms
 // -------------------------
@@ -106,7 +111,7 @@
 @dropdownBorder:                rgba(0,0,0,.2);
 @dropdownLinkColor:             @grayDark;
 @dropdownLinkColorHover:        @white;
-@dropdownLinkBackgroundHover:   @linkColor;
+@dropdownLinkBackgroundHover:   #7D9C9F;
 @dropdownDividerTop:            #e5e5e5;
 @dropdownDividerBottom:         @white;
 
@@ -196,8 +201,8 @@
 // Default 940px grid
 // -------------------------
 @gridColumns:             12;
-@gridColumnWidth:         60px;
-@gridGutterWidth:         20px;
+@gridColumnWidth:         50px;
+@gridGutterWidth:         15px;
 @gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 
 // Fluid grid

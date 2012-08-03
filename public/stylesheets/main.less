@@ -3,29 +3,19 @@
 // -----------------------------------------
 
 
+// Variables & Mixins
+// ------------------
+@import "variables.less";
+@import "mixins.less";
+
+
 // Bootstrap Includes
 // ------------------
-
 @import "bootstrap/reset.less";
-@import "bootstrap/variables.less";
-@import "bootstrap/mixins.less";
 @import "bootstrap/type.less";
 @import "bootstrap/buttons.less";
 @import "bootstrap/button-groups.less";
 @import "bootstrap/dropdowns.less";
-
-
-// Variable Overrides
-// ---------------
-
-@emerPrimary: #AD235E;
-@btnEmergenesisBackground: @emerPrimary;
-@btnEmergenesisBackgroundHighlight: #CD437E;
-@dropdownLinkBackgroundHover: #7D9C9F;
-
-@sansFontFamily: "Numans", sans-serif;
-@gridColumnWidth: 50px;
-@gridGutterWidth: 15px;
 
 
 // Body reset
@@ -121,7 +111,15 @@ a:hover {
     width: 100%;
     height: 5px;
     margin-bottom: 40px;
-    background: @emerPrimary;
+    background: @fuscia;
+}
+
+
+// Buttons
+// -------
+.btn, .btn-group > .dropdown-toggle {
+    .box-shadow(none);
+    border: none;
 }
 
 .btn-emergenesis, .btn-emergenesis:hover {
@@ -148,12 +146,18 @@ a:hover {
     }
 }
 
+
+// Navigation
+//------------
 .nav-floater {
     position: absolute;
     top: 20px;
     left: 15px;
 }
 
+
+// Footer
+//-------
 .footer {
     margin-top: 40px;
     text-align: center;
@@ -195,6 +199,9 @@ a:hover {
     }
 }
 
+
+// Sections
+// --------
 section {
     margin-bottom: 40px;
 }
