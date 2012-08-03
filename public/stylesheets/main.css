@@ -843,8 +843,8 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #7d9c9f;
-  text-decoration: underline;
+  color: #3d5153;
+  text-decoration: none;
 }
 .row {
   margin-left: -12px;
