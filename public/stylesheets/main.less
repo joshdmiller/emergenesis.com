@@ -10,6 +10,22 @@
 @import "bootstrap/variables.less";
 @import "bootstrap/mixins.less";
 @import "bootstrap/type.less";
+@import "bootstrap/buttons.less";
+@import "bootstrap/button-groups.less";
+@import "bootstrap/dropdowns.less";
+
+
+// Variable Overrides
+// ---------------
+
+@emerPrimary: #AD235E;
+@btnEmergenesisBackground: @emerPrimary;
+@btnEmergenesisBackgroundHighlight: #CD437E;
+@dropdownLinkBackgroundHover: #7D9C9F;
+
+@sansFontFamily: "Numans", sans-serif;
+@gridColumnWidth: 50px;
+@gridGutterWidth: 15px;
 
 
 // Body reset
@@ -96,4 +112,118 @@ a:hover {
 // --------------------
 
 @import "responsive.less";
+
+
+// Theme
+// -----
+
+.header-bar {
+    width: 100%;
+    height: 5px;
+    margin-bottom: 40px;
+    background: @emerPrimary;
+}
+
+.btn-emergenesis, .btn-emergenesis:hover {
+    color: @white;
+}
+.btn-emergenesis {
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    .buttonBackground(@btnEmergenesisBackground, @btnEmergenesisBackgroundHighlight);
+
+    .caret {
+        border-top-color: @white;
+        border-bottom-color: @white;
+        .opacity(75);
+    }
+}
+
+.btn-emergenesis.active {
+    color: rgba(255,255,255,.75);
+}
+
+.btn-group.open {
+    .btn-emergenesis.dropdown-toggle {
+        background-color: @btnEmergenesisBackgroundHighlight;
+    }
+}
+
+.nav-floater {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+}
+
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    color: @gray;
+
+    p {
+        font-size: 14px;
+    }
+
+    .nav {
+        display: inline-block;
+        overflow: hidden;
+        padding: 0;
+        margin: 0 auto;
+        list-style: none;
+
+        li {
+            float: left;
+
+            a {
+                display: block;
+                padding: 0 10px;
+                border-right: 1px solid @grayLight;
+                color: @gray;
+                text-decoration: underline;
+            }
+
+            a:hover, a:active {
+                text-decoration: none;
+            }
+        }
+
+        li:last-child {
+
+            a {
+                border: none;
+            }
+        }
+    }
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+section:last-child {
+    margin-bottom: 0px;
+}
+
+
+// Typography
+// ----------
+
+h1, h2, h3, h4 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 16px;
+    text-transform: uppercase;
+    border-bottom: 1px solid @grayLighter;
+}
+
+p {
+    font-size: 18px;
+    line-height: 28px;
+}
 
