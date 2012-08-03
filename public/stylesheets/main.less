@@ -9,13 +9,14 @@
 @import "mixins.less";
 
 
-// Bootstrap Includes
+// Includes
 // ------------------
 @import "bootstrap/reset.less";
 @import "bootstrap/type.less";
 @import "bootstrap/buttons.less";
-@import "bootstrap/button-groups.less";
+@import "button-groups.less";
 @import "bootstrap/dropdowns.less";
+@import "sprites.less";
 
 
 // Body reset
@@ -107,7 +108,7 @@ a:hover {
         width: 100%;
         height: 5px;
         margin-bottom: 40px;
-        background: @fuscia;
+        background: @fuschia;
     }
 }
 
@@ -223,7 +224,7 @@ a:hover {
 // Sections
 // --------
 section {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
 section:last-child {
@@ -244,21 +245,54 @@ h1 {
 }
 
 h2 {
-    font-size: 20px;
+    margin-bottom: 40px;
+    font-size: 14px;
+    line-height: 22px;
     text-transform: uppercase;
-    border-bottom: 1px solid @grayLighter;
+    border-bottom: 1px solid #DFEFF0;
+
+    a, a:visited {
+        color: @textColor;
+    }
+
+    a:hover, a:active {
+        color: @linkColorHover;
+    }
 }
 
-p {
-    font-size: 18px;
-    line-height: 28px;
+h3 {
+    font-size: 22px;
+}
+
+
+// Blog
+// ----
+
+.blog-post {
+    h3 {
+        margin-bottom: 0;
+    }
+
+    .byline {
+        font-size: 16px;
+        color: #B1B1B1;
+        text-align: center;
+        margin-bottom: 20px;
+
+        .author {
+            font-weight: bold;
+        }
+    }
+
+    .readmore {
+        text-align: right;
+    }
 }
 
 
 // Emergenesis Includes
 // --------------------
 
-@import "sprites.less";
 @import "responsive.less";
 
 
