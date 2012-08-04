@@ -19,7 +19,11 @@
         </div>
         
         <div class="container">
-            <h1>emergenesis</h1>
+            <div class="brand">
+                <a href="@routes.Application.index">
+                    <img src="@routes.Assets.at("images/emergenesis_logo.png")" alt="emergenesis" />
+                </a>
+            </div>
         </div>
 
         <div class="nav-floater">
@@ -29,13 +33,13 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">What We're Doing</a></li>
-                    <li><a href="#">Our Blog</a></li>
-                    <li><a href="#">Who We Are</a></li>
-                    <li><a href="#">Get in Touch</a></li>
+                    <li><a href="@routes.Application.index()">Home</a></li>
+                    <li><a href="@routes.Application.projects()">What We're Doing</a></li>
+                    <li><a href="@routes.Blog.index">Our Blog</a></li>
+                    <li><a href="@routes.Application.about">Who We Are</a></li>
+                    <li><a href="@routes.Application.contact">Get in Touch</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">Github</a></li>
+                    <li><a href="http://www.github.com/emergenesis">Github</a></li>
                 </ul>
             </div>
         </div>
@@ -47,11 +51,11 @@
         <div class="container">
             <footer class="footer">
                 <ul class="nav">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="@routes.Application.index()">Home</a></li>
+                    <li><a href="@routes.Application.projects()">Projects</a></li>
+                    <li><a href="@routes.Blog.index()">Blog</a></li>
+                    <li><a href="@routes.Application.about()">About</a></li>
+                    <li><a href="@routes.Application.contact()">Contact</a></li>
                 </ul>
                 <p>&copy; 2012 Emergenesis</p>
             </footer>

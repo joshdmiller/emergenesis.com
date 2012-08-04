@@ -1,18 +1,18 @@
 @main("Emergenesis") {
 
 <section>
-    <h2>Who We Are</h2>
+    <h1><a href="@routes.Application.about()">Who We Are</a></h1>
 
     <p>
         We are a small, high-energy startup dedicated to producing innovative
         open-source web apps for consumers and small businesses that leverage
         the value proposition of the cloud.
-        <a href="#">Read More &raquo;</a>
+        <a href="@routes.Application.about()">Read More &raquo;</a>
     </p>
 </section>
     
 <section>
-    <h2>What We're Working On</h2>
+    <h1><a href="@routes.Application.projects()">What We're Working On</a></h1>
 
     <div id="projectsCarousel" class="carousel slide">
         <div class="carousel-inner">
@@ -24,6 +24,7 @@
                         Quisque quis arcu nec urna porttitor interdum. Etiam id
                         nulla arcu, quis facilisis mauris. Cras et mauris nec
                         diam vestibulum congue eget id elit. 
+                        <a href="@routes.Application.projects()#citeplasm">Read More &raquo;</a>
                     </p>
                 </div>
             </div>
@@ -35,6 +36,7 @@
                         Quisque quis arcu nec urna porttitor interdum. Etiam id
                         nulla arcu, quis facilisis mauris. Cras et mauris nec
                         diam vestibulum congue eget id elit. 
+                        <a href="@routes.Application.projects()#elodi">Read More &raquo;</a>
                     </p>
                 </div>
             </div>
@@ -49,10 +51,10 @@
 </section>
     
 <section>
-    <h2><a href="#">Notes From Our Blog</a></h2>
+    <h1><a href="@routes.Blog.index()">Notes From Our Blog</a></h1>
 
     <div class="blog-post">
-        <h3>This is a Sample Blog Post</h3>
+        <h2><a href="@routes.Blog.show("dummy")">This is a Sample Blog Post</a></h2>
         <div class="byline">
             posted by <span class="author">Josh David Miller</span> on <span class="date">01 August 2012</span>
         </div>
@@ -77,7 +79,7 @@
 </section>
     
 <section>
-    <h2>Get In Touch</h2>
+    <h1><a href="@routes.Application.contact()">Get In Touch</a></h1>
     <div class="row">
         <div class="span9">
             <p>
@@ -93,13 +95,13 @@
         </div>
         <div class="span3">
             <ul class="nav nav-social">
-                <li><a href="#"><i class="icon-social-gplus"></i> Google+</a></li>
-                <li><a href="#"><i class="icon-social-facebook"></i> Facebook</a></li>
-                <li><a href="#"><i class="icon-social-twitter"></i> Twitter</a></li>
-                <li><a href="#"><i class="icon-social-youtube"></i> Youtube</a></li>
-                <li><a href="#"><i class="icon-social-flickr"></i> Flickr</a></li>
-                <li><a href="#"><i class="icon-social-github"></i> Github</a></li>
-                <li><a href="#"><i class="icon-social-rss"></i> RSS</a></li>
+                <li><a href="http://gplus.to/emergenesis"><i class="icon-social-gplus"></i> Google+</a></li>
+                <li><a href="http://www.facebook.com/emergenesis"><i class="icon-social-facebook"></i> Facebook</a></li>
+                <li><a href="http://www.twitter.com/emergenesis"><i class="icon-social-twitter"></i> Twitter</a></li>
+                <li><a href="http://www.youtube.com/emergenesis"><i class="icon-social-youtube"></i> Youtube</a></li>
+                <li><a href="http://www.flickr.com/photos/emergenesis"><i class="icon-social-flickr"></i> Flickr</a></li>
+                <li><a href="http://www.github.com/emergenesis"><i class="icon-social-github"></i> Github</a></li>
+                <li><a href="@routes.Blog.rss()"><i class="icon-social-rss"></i> RSS</a></li>
             </ul>
         </div>
     </div>

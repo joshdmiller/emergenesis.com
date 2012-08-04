@@ -1297,6 +1297,10 @@ section {
 section:last-child {
   margin-bottom: 0px;
 }
+.brand {
+  margin-bottom: 60px;
+  text-align: center;
+}
 h1,
 h2,
 h3,
@@ -1306,23 +1310,20 @@ h4 {
 }
 h1 {
   margin-bottom: 40px;
-}
-h2 {
-  margin-bottom: 40px;
   font-size: 14px;
   line-height: 22px;
   text-transform: uppercase;
   border-bottom: 1px solid #DFEFF0;
 }
-h2 a,
-h2 a:visited {
+h1 a,
+h1 a:visited {
   color: #333333;
 }
-h2 a:hover,
-h2 a:active {
+h1 a:hover,
+h1 a:active {
   color: #ad235e;
 }
-h3 {
+h2 {
   font-size: 22px;
 }
 .blog-post h3 {
