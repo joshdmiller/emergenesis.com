@@ -1253,6 +1253,7 @@ a:hover {
   line-height: 24px;
 }
 .nav-social li a i {
+  margin-right: 8px;
   vertical-align: middle;
 }
 .nav-social li a:hover,
