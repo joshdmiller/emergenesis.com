@@ -16,8 +16,12 @@
 @import "bootstrap/buttons.less";
 @import "button-groups.less";
 @import "bootstrap/dropdowns.less";
+@import "bootstrap/navs.less";
+@import "bootstrap/pagination.less";
 @import "sprites.less";
 @import "bootstrap/carousel.less";
+@import "bootstrap/accordion.less";
+@import "bootstrap/component-animations.less";
 
 
 // Body reset
@@ -174,6 +178,7 @@ a:hover {
 
         a:hover, a:active {
             text-decoration: none;
+            background-color: transparent;
         }
     }
 }
@@ -210,6 +215,7 @@ a:hover {
 
             a:hover, a:active {
                 text-decoration: none;
+                background-color: transparent;
             }
         }
 
@@ -293,6 +299,19 @@ h2 {
 
     .readmore {
         text-align: right;
+    }
+}
+
+.blog-posts {
+    .blog-post {
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid @grayLighter;
+    }
+
+    .blog-post:last-child {
+        border-bottom: none;
+        margin-bottom: 20px;
     }
 }
 
