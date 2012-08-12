@@ -142,6 +142,14 @@
       if (typeof option == 'number') data.to(option)
       else if (typeof option == 'string' || (option = options.slide)) data[option]()
       else if (options.interval) data.cycle()
+
+      // mobile swiping support
+      $this.swipeleft(function() {
+        $this.carousel('next')
+      })
+      $this.swiperight(function() {
+        $this.carousel('prev')
+      })
     })
   }
 

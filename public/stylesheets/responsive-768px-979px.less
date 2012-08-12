@@ -46,4 +46,25 @@
         }
     }
   }
+
+  // Carousel
+  // --------
+  // Hide the description text on the carousel
+  .carousel 
+    .carousel-control {
+        display: none;
+    }
+
+    .carousel-caption {
+        h4 {
+            white-space: nowrap;
+            display: block;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        p {
+          display: none;
+        }
+    }
+  }
 }

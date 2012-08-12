@@ -18,10 +18,10 @@
 @import "bootstrap/dropdowns.less";
 @import "bootstrap/navs.less";
 @import "bootstrap/pagination.less";
-@import "sprites.less";
-@import "bootstrap/carousel.less";
 @import "bootstrap/accordion.less";
 @import "bootstrap/component-animations.less";
+@import "sprites.less";
+@import "carousel.less";
 
 
 // Body reset
@@ -29,6 +29,7 @@
 
 body {
   margin: 0;
+  padding-top: 40px;
   font-family: @baseFontFamily;
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
@@ -108,11 +109,17 @@ a:hover {
 // -----
 
 .header-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 5px;
+    z-index: 100;
 
     .header-bar-inner {
-        width: 100%;
+        //width: 100%;
         height: 5px;
-        margin-bottom: 40px;
+        //margin-bottom: 40px;
         background: @fuschia;
     }
 }
@@ -153,9 +160,10 @@ a:hover {
 // Navigation
 //------------
 .nav-floater {
-    position: absolute;
+    position: fixed;
     top: 20px;
     left: 15px;
+    z-index: 100;
 }
 
 .nav-social {
