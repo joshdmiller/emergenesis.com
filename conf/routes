@@ -10,9 +10,16 @@ GET     /projects                   controllers.Application.projects
 
 # Blog
 GET     /blog                       controllers.Blog.index(num: Integer = 1)
+GET     /blog/new                   controllers.Blog.add
+POST    /blog/new                   controllers.Blog.create
 GET     /blog/page/:num             controllers.Blog.index(num: Integer)
 GET     /blog/:slug                 controllers.Blog.show(slug:String)
 GET     /feed                       controllers.Blog.rss
+
+# Authentication
+GET     /login                      controllers.Application.login
+POST    /login                      controllers.Application.authenticate
+GET     /logout                     controllers.Application.logout
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

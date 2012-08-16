@@ -1,4 +1,4 @@
-@(posts: Iterator[Post], page_num: Integer, is_next: Boolean = false, is_prev: Boolean = false)
+@(posts: Iterator[Post], page_num: Integer, is_next: Boolean = false, is_prev: Boolean = false, is_auth: Boolean)
 
 @main("Blog") {
 
@@ -24,6 +24,12 @@
         $("#filterToggle").collapse();
     </script>
 </section>-->
+
+@if(is_auth) {
+    <section>
+        <a href="@routes.Blog.add()">Create a new post.</a>
+    </section>
+}
 
 <section class="blog-posts">
     @posts.map { post =>
