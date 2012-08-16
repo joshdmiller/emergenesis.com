@@ -1,3 +1,5 @@
+@(posts: Iterator[Post], page_num: Integer, is_next: Boolean = false, is_prev: Boolean = false)
+
 @main("Blog") {
 
 <section>
@@ -24,90 +26,37 @@
 </section>
 
 <section class="blog-posts">
-    <div class="blog-post">
-        <h2><a href="@routes.Blog.show("dummy")">This is a Sample Blog Post</a></h2>
-        <div class="byline">
-            posted by <span class="author">Josh David Miller</span> on <span class="date">01 August 2012</span>
+    @posts.map { post =>
+        <div class="blog-post">
+            <h2><a href="@routes.Blog.show(post.slug)">@post.title</a></h2>
+            <div class="byline">
+                posted by <span class="author">@post.author</span> on <span class="date">@post.modified_at.format("dd MMMM YYYY")</span>
+            </div>
+            <div class="body">
+                <p>
+                    @post.body
+                </p>
+            </div>
+            <div class="readmore">
+                <a href="#">Continue reading &raquo;</a>
+            </div>
         </div>
-        <div class="body">
-            <p>
-                 Aliquam vulputate, magna ac mollis convallis, nisi nisl cursus
-                 turpis, in sagittis dui sapien eu dolor. Vestibulum vulputate
-                 lacus ut est placerat in sagittis odio condimentum. Nullam
-                 porta rhoncus mauris sit amet varius. Pellentesque lacinia
-                 facilisis adipiscing. Phasellus sodales justo nec orci feugiat
-                 sodales. Nam adipiscing ultrices lorem nec venenatis. In eget
-                 venenatis magna. Suspendisse vitae eleifend odio. Vivamus odio
-                 arcu, euismod a tristique non, dapibus nec lacus. In lacinia
-                 lorem sit amet urna sodales ornare. Nunc elementum sem eu
-                 magna ullamcorper congue. 
-            </p>
-        </div>
-        <div class="readmore">
-            <a href="#">Continue reading &raquo;</a>
-        </div>
-    </div>
-    
-    <div class="blog-post">
-        <h2><a href="@routes.Blog.show("dummy")">Another, More Interesting Post</a></h2>
-        <div class="byline">
-            posted by <span class="author">Josh David Miller</span> on <span class="date">28 July 2012</span>
-        </div>
-        <div class="body">
-            <p>
-                 Aliquam vulputate, magna ac mollis convallis, nisi nisl cursus
-                 turpis, in sagittis dui sapien eu dolor. Vestibulum vulputate
-                 lacus ut est placerat in sagittis odio condimentum. Nullam
-                 porta rhoncus mauris sit amet varius. Pellentesque lacinia
-                 facilisis adipiscing. Phasellus sodales justo nec orci feugiat
-                 sodales. Nam adipiscing ultrices lorem nec venenatis. In eget
-                 venenatis magna. Suspendisse vitae eleifend odio. Vivamus odio
-                 arcu, euismod a tristique non, dapibus nec lacus. In lacinia
-                 lorem sit amet urna sodales ornare. Nunc elementum sem eu
-                 magna ullamcorper congue. 
-            </p>
-        </div>
-        <div class="readmore">
-            <a href="#">Continue reading &raquo;</a>
-        </div>
-    </div>
-    
-    <div class="blog-post">
-        <h2><a href="@routes.Blog.show("dummy")">This is a Sample Blog Post</a></h2>
-        <div class="byline">
-            posted by <span class="author">Josh David Miller</span> on <span class="date">24 July 2012</span>
-        </div>
-        <div class="body">
-            <p>
-                 Aliquam vulputate, magna ac mollis convallis, nisi nisl cursus
-                 turpis, in sagittis dui sapien eu dolor. Vestibulum vulputate
-                 lacus ut est placerat in sagittis odio condimentum. Nullam
-                 porta rhoncus mauris sit amet varius. Pellentesque lacinia
-                 facilisis adipiscing. Phasellus sodales justo nec orci feugiat
-                 sodales. Nam adipiscing ultrices lorem nec venenatis. In eget
-                 venenatis magna. Suspendisse vitae eleifend odio. Vivamus odio
-                 arcu, euismod a tristique non, dapibus nec lacus. In lacinia
-                 lorem sit amet urna sodales ornare. Nunc elementum sem eu
-                 magna ullamcorper congue. 
-            </p>
-        </div>
-        <div class="readmore">
-            <a href="#">Continue reading &raquo;</a>
-        </div>
-    </div>
+    }
 </section>
 
-<section>
-    <div class="pagination pagination-centered">
-        <ul>
-            <li><a href="#">Prev</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">Next</a></li>
-        </ul>
-    </div>
+<section class="pagination">
+    <ul class="pager">
+        @if(is_prev) {
+            <li class="previous"><a href="@routes.Blog.index(page_num-1)">&larr; Newer</a></li>
+        } else {
+            <li class="previous disabled"><a href="#">&larr; Newer</a></li>
+        }
+        @if(is_next) {
+            <li class="next"><a href="@routes.Blog.index(page_num+1)">Older &rarr;</a></li>
+        } else {
+            <li class="next disabled"><a href="#">Older &rarr;</a></li>
+        }
+    </ul>
 </section>
 
 }

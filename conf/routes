@@ -9,7 +9,8 @@ GET     /contact                    controllers.Application.contact
 GET     /projects                   controllers.Application.projects
 
 # Blog
-GET     /blog                       controllers.Blog.index
+GET     /blog                       controllers.Blog.index(num: Integer = 1)
+GET     /blog/page/:num             controllers.Blog.index(num: Integer)
 GET     /blog/:slug                 controllers.Blog.show(slug:String)
 GET     /feed                       controllers.Blog.rss
 

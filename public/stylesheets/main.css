@@ -1134,67 +1134,48 @@ input[type="submit"].btn.btn-mini {
   border-color: #ddd #ddd #ddd transparent;
   *border-left-color: #ffffff;
 }
-.pagination {
-  height: 56px;
-  margin: 28px 0;
-}
-.pagination ul {
-  display: inline-block;
-  *display: inline;
-  /* IE7 inline-block hack */
-
-  *zoom: 1;
+.pager {
   margin-left: 0;
-  margin-bottom: 0;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  margin-bottom: 28px;
+  list-style: none;
+  text-align: center;
+  *zoom: 1;
 }
-.pagination li {
+.pager:before,
+.pager:after {
+  display: table;
+  content: "";
+}
+.pager:after {
+  clear: both;
+}
+.pager li {
   display: inline;
 }
-.pagination a {
-  float: left;
-  padding: 0 14px;
-  line-height: 54px;
-  text-decoration: none;
+.pager a {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: #fff;
   border: 1px solid #ddd;
-  border-left-width: 0;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
 }
-.pagination a:hover,
-.pagination .active a {
+.pager a:hover {
+  text-decoration: none;
   background-color: #f5f5f5;
 }
-.pagination .active a {
+.pager .next a {
+  float: right;
+}
+.pager .previous a {
+  float: left;
+}
+.pager .disabled a,
+.pager .disabled a:hover {
   color: #999999;
+  background-color: #fff;
   cursor: default;
-}
-.pagination .disabled span,
-.pagination .disabled a,
-.pagination .disabled a:hover {
-  color: #999999;
-  background-color: transparent;
-  cursor: default;
-}
-.pagination li:first-child a {
-  border-left-width: 1px;
-  -webkit-border-radius: 3px 0 0 3px;
-  -moz-border-radius: 3px 0 0 3px;
-  border-radius: 3px 0 0 3px;
-}
-.pagination li:last-child a {
-  -webkit-border-radius: 0 3px 3px 0;
-  -moz-border-radius: 0 3px 3px 0;
-  border-radius: 0 3px 3px 0;
-}
-.pagination-centered {
-  text-align: center;
-}
-.pagination-right {
-  text-align: right;
 }
 .accordion {
   margin-bottom: 28px;
@@ -1791,6 +1772,10 @@ h2 {
 .blog-posts .blog-post:last-child {
   border-bottom: none;
   margin-bottom: 20px;
+}
+.pagination {
+  padding-top: 20px;
+  border-top: 1px solid #eeeeee;
 }
 /*!
  * Bootstrap Responsive v2.0.4
