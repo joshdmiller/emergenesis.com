@@ -2,9 +2,9 @@
 
 @main("Login") {
 
-  @helper.form(routes.Application.authenticate) {
+    <h2>Sign in</h2>
 
-    <h1>Sign in</h1>
+    @helper.form(action = routes.Application.authenticate, 'class -> "form-horizontal") {
 
     @form.globalError.map { error =>
       <p class="error">
@@ -18,15 +18,24 @@
       </p>
     }
 
-    <p>
-      <input type="email" name="email" placeholder="Email" id="email" value="@form("email").value">
-    </p>
-    <p>
-      <input type="pass" name="pass" id="pass" placeholder="Password">
-    </p>
-    <p>
-      <button type="submit" id="loginbutton">Login</button>
-    </p>
+    <fieldset>
+        <div class="control-group">
+            <label for="email" class="control-label">Email Address</label>
+            <div class="controls">
+                <input type="email" name="email" placeholder="Email" id="email" value="@form("email").value">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="password" class="control-label">Password</label>
+            <div class="controls">
+                <input type="password" name="pass" id="pass" placeholder="Password">
+            </div>
+        </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="reset" class="btn btn-inverse">Cancel</button>
+          </div>
+    </fieldset>
 
     }
 }
