@@ -54,13 +54,9 @@
     <ul class="pager">
         @if(is_prev) {
             <li class="previous"><a href="@routes.Blog.index(page_num-1)">&larr; Newer</a></li>
-        } else {
-            <li class="previous disabled"><a href="#">&larr; Newer</a></li>
         }
         @if(is_next) {
             <li class="next"><a href="@routes.Blog.index(page_num+1)">Older &rarr;</a></li>
-        } else {
-            <li class="next disabled"><a href="#">Older &rarr;</a></li>
         }
     </ul>
 </section>
