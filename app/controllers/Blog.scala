@@ -15,7 +15,18 @@ object Blog extends Controller {
     Ok(views.html.blog(posts, num, is_next, is_prev))
   }
 
-  def show(slug: String) = TODO
+  def show(slug: String) = Action {
+    Post.findOneBySlug(slug) match {
+        case Some(post) => {
+            Ok(views.html.blogPost(post))
+        }
+
+        case None => {
+            NotFound("That post does not exist.")
+        }
+    }
+
+  }
   
   def rss = TODO
   

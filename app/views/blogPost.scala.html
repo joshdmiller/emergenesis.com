@@ -1,0 +1,26 @@
+@(post: Post)
+
+@main(post.title) {
+
+<section>
+    <h1>Blog</h1>
+</section>
+
+<section class="blog-posts">
+    <div class="blog-post">
+        <h2><a href="@routes.Blog.show(post.slug)">@post.title</a></h2>
+        <div class="byline">
+            posted by <span class="author">@post.author</span> on <span class="date">@post.modified_at.format("dd MMMM YYYY")</span>
+        </div>
+        <div class="body">
+            <p>
+                @post.body
+            </p>
+        </div>
+        <div class="readmore">
+            <a href="#">Continue reading &raquo;</a>
+        </div>
+    </div>
+</section>
+
+}
