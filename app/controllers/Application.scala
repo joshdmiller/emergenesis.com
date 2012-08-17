@@ -56,7 +56,9 @@ object Application extends Controller with LoginLogout with Authentication {
   def authenticate = Action { implicit request =>
     loginForm.bindFromRequest.fold(
       formWithErrors => BadRequest(views.html.login(formWithErrors)),
-      user => gotoLoginSucceeded(user.get.email)
+      user => gotoLoginSucceeded(user.get.email).flashing(
+        "success" -> "Login successful."
+      )
     )
   }
   

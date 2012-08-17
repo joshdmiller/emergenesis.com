@@ -2,14 +2,27 @@ package controllers
 
 import play.api._
 import play.api.mvc._
+import play.api.data._
+import play.api.data.Forms._
 import jp.t2v.lab.play20.auth._
+import se.radley.plugin.salat.Formats._
 
 import models._
 import views.html
 
 object Blog extends Controller with Auth with Authentication {
+
+  val editForm = Form(
+    mapping(
+      "id" -> optional(objectId),
+      "title" -> nonEmptyText,
+      "slug" -> nonEmptyText,
+      "author" -> nonEmptyText,
+      "body" -> nonEmptyText
+    )(Post.createOrSave)(Post.toForm)
+  )
   
-  def index(num: Integer = 1) = optionalUserAction { maybeUser => request =>
+  def index(num: Integer = 1) = optionalUserAction { maybeUser => implicit request =>
     val limit = 5
     val posts = Post.findAll.skip((num-1)*limit).limit(limit)
     val is_prev = num > 1
@@ -18,27 +31,33 @@ object Blog extends Controller with Auth with Authentication {
     Ok(html.blog.list(posts, num, is_next, is_prev, is_auth))
   }
 
-  def show(slug: String) = optionalUserAction { maybeUser => request =>
+  def show(slug: String) = optionalUserAction { maybeUser => implicit request =>
     Post.findOneBySlug(slug) match {
         case Some(post) => {
             val is_auth = maybeUser match { case Some(user) => true case None => false }
             Ok(html.blog.show(post, is_auth))
         }
 
-        case None => {
-            NotFound("That post does not exist.")
-        }
+        case None => NotFound("That post does not exist.")
     }
 
   }
 
-  //def add = authorizedAction(Administrator) { user => implicit request =>
-  //}
-  def add = TODO
+  def add = authorizedAction(Administrator) { user => implicit request =>
+    Ok(html.blog.edit(editForm))
+  }
 
-  //def create = authorizedAction(Administrator) { user => implicit request =>
-  //}
-  def create = TODO
+  def submit = authorizedAction(Administrator) { user => implicit request =>
+    editForm.bindFromRequest.fold(
+      formWithErrors => BadRequest(html.blog.edit(formWithErrors)),
+      post => {
+        Post.save(post)
+        Redirect(routes.Blog.show(post.slug)).flashing(
+            "success" -> "Post created"
+        )
+      }
+    )
+  }
   
   def edit(slug: String) = TODO
   

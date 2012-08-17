@@ -7,15 +7,15 @@
     @helper.form(action = routes.Application.authenticate, 'class -> "form-horizontal") {
 
     @form.globalError.map { error =>
-      <p class="error">
+      <div class="alert alert-error">
         @error.message
-      </p>
+      </div>
     }
 
     @flash.get("success").map { message =>
-      <p class="success">
+      <div class="alert alert-success">
         @message
-      </p>
+      </div>
     }
 
     <fieldset>

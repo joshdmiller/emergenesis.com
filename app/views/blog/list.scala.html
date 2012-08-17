@@ -1,9 +1,21 @@
-@(posts: Iterator[Post], page_num: Integer, is_next: Boolean = false, is_prev: Boolean = false, is_auth: Boolean)
+@(posts: Iterator[Post], page_num: Integer, is_next: Boolean = false, is_prev: Boolean = false, is_auth: Boolean)(implicit flash: Flash)
 
 @main("Blog") {
 
 <section>
     <h1>Blog</h1>
+
+    @flash.get("success").map { message =>
+        <div class="alert alert-success">
+            @message
+        </div>
+    }
+    
+    @flash.get("error").map { message =>
+        <div class="alert alert-error">
+            @message
+        </div>
+    }
     
     @if(is_auth) {
         <a href="@routes.Blog.add()" class="btn btn-primary btn-small">New</a>

@@ -1,0 +1,37 @@
+@(form: Form[Post])(implicit flash: Flash)
+
+@import helpers.Bootstrap._
+
+@main("Editing") {
+    @helper.form(action = routes.Blog.submit, 'class -> "form-horizontal") {
+        @form.globalError.map { error =>
+          <div class="alert alert-error">
+            @error.message
+          </div>
+        }
+        
+        @form.globalError.map { success =>
+          <div class="alert alert-success">
+            @success.message
+          </div>
+        }
+
+        @if(form("title").value) {
+            <h2>Editing "@form("title").value"</h2>
+        } else {
+            <h2>Create a new post</h2>
+        }
+
+        <input type="hidden" value="@form("id").value" name="id" />
+        <fieldset>
+            @helper.inputText(form("title"), 'class -> "input-xlarge")
+            @helper.inputText(form("slug"), 'class -> "input-xlarge")
+            @helper.inputText(form("author"), 'class -> "input-xlarge")
+            @helper.textarea(form("body"), 'style -> "width: 75%;")
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Save</button>
+                <button class="btn btn-inverse" type="reset">Cancel</button>
+            </div>
+        </fieldset>
+    }
+}

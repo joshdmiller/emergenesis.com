@@ -1,6 +1,12 @@
-@(post: Post, is_auth: Boolean)
+@(post: Post, is_auth: Boolean)(implicit flash: Flash)
 
 @main(post.title) {
+
+@flash.get("success").map { message =>
+    <div class="alert alert-success">
+        @message
+    </div>
+}
 
 <section class="blog-posts">
     <div class="blog-post">

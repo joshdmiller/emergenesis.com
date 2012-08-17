@@ -25,5 +25,30 @@ object Post extends ModelCompanion[Post, ObjectId] {
   def findOneBySlug(slug: String): Option[Post] = dao.findOne(MongoDBObject("slug" -> slug))
 
   def count: Long = dao.collection.count
+
+  def createOrSave(
+    id: Option[ObjectId],
+    title: String, 
+    slug: String, 
+    author: String, 
+    body: String
+  ) = {
+    Post(
+      id getOrElse new ObjectId,
+      title,
+      slug,
+      author,
+      body,
+      new Date()
+    )
+  }
+
+  def toForm(post: Post) = Some(
+    Some(post.id),
+    post.title,
+    post.slug,
+    post.author,
+    post.body
+  )
 }
 

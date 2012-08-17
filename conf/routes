@@ -10,7 +10,7 @@ GET     /projects                   controllers.Application.projects
 
 # Blog Administration
 GET     /blog/new                   controllers.Blog.add
-POST    /blog/new                   controllers.Blog.create
+POST    /blog/submit                controllers.Blog.submit
 GET     /blog/:slug/edit            controllers.Blog.edit(slug:String)
 GET     /blog/:slug/delete          controllers.Blog.delete(slug:String)
 
