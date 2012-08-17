@@ -4,6 +4,11 @@
 
 <section>
     <h1>Blog</h1>
+    
+    @if(is_auth) {
+        <a href="@routes.Blog.add()" class="btn btn-primary btn-small">New</a>
+        <a href="@routes.Application.logout()" class="btn btn-warning btn-small">Logout</a>
+    }
 </section>
 
 <!--<section class="accordion">
@@ -24,12 +29,6 @@
         $("#filterToggle").collapse();
     </script>
 </section>-->
-
-@if(is_auth) {
-    <section>
-        <a href="@routes.Blog.add()">Create a new post.</a>
-    </section>
-}
 
 <section class="blog-posts">
     @posts.map { post =>
