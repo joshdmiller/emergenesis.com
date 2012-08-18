@@ -23,9 +23,7 @@
             }
         </div>
         <div class="body">
-            <p>
-                @post.body
-            </p>
+            @helper.markdown(post.body)
         </div>
     </div>
 </section>
