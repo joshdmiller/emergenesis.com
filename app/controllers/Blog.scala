@@ -19,14 +19,19 @@ object Blog extends Controller with Auth with Authentication {
       "title" -> nonEmptyText,
       "slug" -> nonEmptyText,
       "author" -> nonEmptyText,
-      "body" -> nonEmptyText
+      "body" -> nonEmptyText,
+      "is_published" -> boolean
     )(Post.createOrSave)(Post.toForm)
   )
   
   def list(num: Integer = 1) = optionalUserAction { maybeUser => implicit request =>
     val limit = 5
-    val posts = Post.findAll
-      .sort(orderBy = MongoDBObject("modified_at" -> -1))
+    val posts = maybeUser match {
+      case Some(user) => Post.findAll
+      case None => Post.find(ref = MongoDBObject("is_published" -> true))
+    }
+
+    posts.sort(orderBy = MongoDBObject("modified_at" -> -1))
       .skip((num-1)*limit)
       .limit(limit)
     val is_prev = num > 1

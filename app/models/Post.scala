@@ -15,6 +15,7 @@ case class Post(
   slug: String,
   author: String,
   body: String,
+  is_published: Boolean,
   modified_at: Date = new Date()
 )
 
@@ -31,7 +32,8 @@ object Post extends ModelCompanion[Post, ObjectId] {
     title: String, 
     slug: String, 
     author: String, 
-    body: String
+    body: String,
+    is_published: Boolean
   ) = {
     Post(
       id getOrElse new ObjectId,
@@ -39,6 +41,7 @@ object Post extends ModelCompanion[Post, ObjectId] {
       slug,
       author,
       body,
+      is_published,
       new Date()
     )
   }
@@ -48,7 +51,8 @@ object Post extends ModelCompanion[Post, ObjectId] {
     post.title,
     post.slug,
     post.author,
-    post.body
+    post.body,
+    post.is_published
   )
 }
 
