@@ -2478,13 +2478,13 @@ h2 {
   text-align: right;
 }
 .blog-posts .blog-post {
-  margin-bottom: 40px;
-  padding-bottom: 20px;
+  margin-bottom: 50px;
+  padding-bottom: 50px;
   border-bottom: 1px solid #eeeeee;
 }
 .blog-posts .blog-post:last-child {
   border-bottom: none;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
 }
 .pagination {
   padding-top: 20px;

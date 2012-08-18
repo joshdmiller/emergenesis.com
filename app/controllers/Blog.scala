@@ -6,6 +6,7 @@ import play.api.data._
 import play.api.data.Forms._
 import jp.t2v.lab.play20.auth._
 import se.radley.plugin.salat.Formats._
+import com.mongodb.casbah.Imports.MongoDBObject
 
 import models._
 import views.html
@@ -24,7 +25,10 @@ object Blog extends Controller with Auth with Authentication {
   
   def list(num: Integer = 1) = optionalUserAction { maybeUser => implicit request =>
     val limit = 5
-    val posts = Post.findAll.skip((num-1)*limit).limit(limit)
+    val posts = Post.findAll
+      .sort(orderBy = MongoDBObject("modified_at" -> -1))
+      .skip((num-1)*limit)
+      .limit(limit)
     val is_prev = num > 1
     val is_next = Post.count > limit * num
     val is_auth = maybeUser match { case Some(user) => true case None => false }
@@ -69,7 +73,15 @@ object Blog extends Controller with Auth with Authentication {
     }
   }
   
-  def edit(slug: String) = TODO
+  def edit(slug: String) = authorizedAction(Administrator) { user => implicit request =>
+    Post.findOneBySlug(slug) match {
+      case Some(post) => {
+        Ok(html.blog.edit(editForm.fill(post)))
+      }
+
+      case None => NotFound("Cannot edit a nonexistent post.")
+    }
+  }
   
   def rss = TODO
   

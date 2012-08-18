@@ -51,11 +51,8 @@
             </div>
             <div class="body">
                 <p>
-                    @post.body
+                    @helper.markdown(post.body)
                 </p>
-            </div>
-            <div class="readmore">
-                <a href="#">Continue reading &raquo;</a>
             </div>
         </div>
     }
