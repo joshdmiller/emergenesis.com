@@ -1,6 +1,9 @@
-@(mkd: String)
+@(mkd: String, truncate: Boolean)
 
 @import com.tristanhunt.knockoff.DefaultDiscounter._
 
-@toXHTML(knockoff(mkd))
+@defining(if (!truncate) mkd else """<!--readmore-->""".r.split(mkd)(0)) { text =>
+    @toXHTML(knockoff(text))
+}
+
 
