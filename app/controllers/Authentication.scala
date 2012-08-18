@@ -49,7 +49,7 @@ trait Authentication extends AuthConfig {
   /**
    * Where to redirect the user after a successful login.
    */
-  def loginSucceeded[A](request: Request[A]): PlainResult = Redirect(routes.Blog.index(1))
+  def loginSucceeded[A](request: Request[A]): PlainResult = Redirect(routes.Blog.list(1))
 
   /**
    * Where to redirect the user after logging out

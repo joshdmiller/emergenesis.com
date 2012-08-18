@@ -64,10 +64,10 @@
 <section class="pagination">
     <ul class="pager">
         @if(is_prev) {
-            <li class="previous"><a href="@routes.Blog.index(page_num-1)">&larr; Newer</a></li>
+            <li class="previous"><a href="@routes.Blog.list(page_num-1)">&larr; Newer</a></li>
         }
         @if(is_next) {
-            <li class="next"><a href="@routes.Blog.index(page_num+1)">Older &rarr;</a></li>
+            <li class="next"><a href="@routes.Blog.list(page_num+1)">Older &rarr;</a></li>
         }
     </ul>
 </section>

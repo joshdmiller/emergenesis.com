@@ -22,7 +22,7 @@ object Blog extends Controller with Auth with Authentication {
     )(Post.createOrSave)(Post.toForm)
   )
   
-  def index(num: Integer = 1) = optionalUserAction { maybeUser => implicit request =>
+  def list(num: Integer = 1) = optionalUserAction { maybeUser => implicit request =>
     val limit = 5
     val posts = Post.findAll.skip((num-1)*limit).limit(limit)
     val is_prev = num > 1
@@ -59,9 +59,17 @@ object Blog extends Controller with Auth with Authentication {
     )
   }
   
-  def edit(slug: String) = TODO
+  def delete(slug: String) = authorizedAction(Administrator) { user => implicit request =>
+    Post.findOneBySlug(slug) match {
+      case Some(post) => {
+        Post.remove(post)
+        Redirect(routes.Blog.list(1)).flashing("success" -> "Post deleted.")
+      }
+      case None => NotFound("Cannot delete a nonexistent post.")
+    }
+  }
   
-  def delete(slug: String) = TODO
+  def edit(slug: String) = TODO
   
   def rss = TODO
   
