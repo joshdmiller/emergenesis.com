@@ -1,0 +1,30 @@
+@(posts: Iterator[Post])<?xml version="1.0" encoding="UTF-8" ?>
+@import com.tristanhunt.knockoff.DefaultDiscounter._
+@import java.util.Date
+@defining(posts.duplicate) { iters =>
+@defining(iters._2.max(Ordering[Date].on((_: Post).modified_at)).modified_at) { lmd =>
+<rss version="2.0">
+<channel>
+    <title>Emergenesis Blog</title>
+    <description><![CDATA[
+        Posts from the blog of Emergenesis, a small, high-energy startup
+        dedicated to producing innovative open-source web apps for
+        consumers and small businesses that leverage the value proposition
+        of the cloud.
+    ]]></description>
+    <link>http://www.emergenesis.com</link>
+    <ttl>1800</ttl>
+    <lastBuildDate>@lmd</lastBuildDate>
+    <pubDate>@lmd</pubDate>
+    @iters._1.map { post =>
+        <item>
+            <title>@post.title</title>
+            <description><![CDATA[@toXHTML(knockoff("""<!--readmore-->""".r.split(post.body)(0)))]]></description>
+            <link>@routes.Blog.show(post.slug)</link>
+            <guid>@routes.Blog.show(post.slug)</guid>
+            <pubDate>@post.modified_at</pubDate>
+        </item>
+    }}
+</channel>
+</rss>
+}

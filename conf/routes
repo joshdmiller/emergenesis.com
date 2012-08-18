@@ -18,7 +18,7 @@ GET     /blog/:slug/delete          controllers.Blog.delete(slug:String)
 GET     /blog                       controllers.Blog.list(num: Integer = 1)
 GET     /blog/page/:num             controllers.Blog.list(num: Integer)
 GET     /blog/:slug                 controllers.Blog.show(slug:String)
-GET     /feed                       controllers.Blog.rss
+GET     /feed                       controllers.Blog.feed
 
 # Authentication
 GET     /login                      controllers.Application.login

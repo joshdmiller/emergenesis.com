@@ -9,7 +9,7 @@ import se.radley.plugin.salat.Formats._
 import com.mongodb.casbah.Imports.MongoDBObject
 
 import models._
-import views.html
+import views._
 
 object Blog extends Controller with Auth with Authentication {
 
@@ -88,6 +88,12 @@ object Blog extends Controller with Auth with Authentication {
     }
   }
   
-  def rss = TODO
+  def feed = Action {
+    val posts = Post.find(ref = MongoDBObject("is_published" -> true))
+      .sort(orderBy = MongoDBObject("modified_at" -> -1))
+      .limit(10)
+    
+    Ok(xml.blog.feed(posts)).as("application/rss+xml")
+  }
   
 }
