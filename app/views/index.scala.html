@@ -1,3 +1,5 @@
+@(posts: Iterator[Post])
+
 @main("Emergenesis") {
 
 <section>
@@ -59,28 +61,8 @@
 <section>
     <h1><a href="@routes.Blog.list(1)">Notes From Our Blog</a></h1>
 
-    <div class="blog-post">
-        <h2><a href="@routes.Blog.show("dummy")">This is a Sample Blog Post</a></h2>
-        <div class="byline">
-            posted by <span class="author">Josh David Miller</span> on <span class="date">01 August 2012</span>
-        </div>
-        <div class="body">
-            <p>
-                 Aliquam vulputate, magna ac mollis convallis, nisi nisl cursus
-                 turpis, in sagittis dui sapien eu dolor. Vestibulum vulputate
-                 lacus ut est placerat in sagittis odio condimentum. Nullam
-                 porta rhoncus mauris sit amet varius. Pellentesque lacinia
-                 facilisis adipiscing. Phasellus sodales justo nec orci feugiat
-                 sodales. Nam adipiscing ultrices lorem nec venenatis. In eget
-                 venenatis magna. Suspendisse vitae eleifend odio. Vivamus odio
-                 arcu, euismod a tristique non, dapibus nec lacus. In lacinia
-                 lorem sit amet urna sodales ornare. Nunc elementum sem eu
-                 magna ullamcorper congue. 
-            </p>
-        </div>
-        <div class="readmore">
-            <a href="#">Continue reading &raquo;</a>
-        </div>
+    <div class="blog-posts">
+        @posts.map { post => @helper.post(post, true, false) }
     </div>
 </section>
     

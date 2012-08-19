@@ -1,0 +1,25 @@
+@(post: Post, truncate: Boolean, show_admin: Boolean)
+
+<div class="blog-post">
+    <h2><a href="@routes.Blog.show(post.slug)">@post.title</a></h2>
+    <div class="byline">
+        posted by <span class="author">@post.author</span> on <span class="date">@post.modified_at.format("dd MMMM YYYY")</span>
+        @if(show_admin) {
+        <span class="admin">
+            &nbsp;|&nbsp;
+            <a href="@routes.Blog.edit(post.slug)" class="btn btn-mini btn-success">Edit</a>
+            &nbsp;
+            <a href="@routes.Blog.delete(post.slug)" class="btn btn-mini btn-danger">Delete</a>
+        </span>
+        }
+    </div>
+    <div class="body">
+        <p>
+            @helper.markdown(post.body, truncate)
+        </p>
+    </div>
+    <div class="readmore">
+        <a href="@routes.Blog.show(post.slug)">Continue reading &raquo;</a>
+    </div>
+</div>
+

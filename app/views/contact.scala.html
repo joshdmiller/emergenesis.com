@@ -63,10 +63,10 @@
     
     @helper.form(action = routes.Application.sendemail, 'class -> "form-horizontal") {
         <fieldset>
-            @helper.inputText(form("name"), 'class -> "input-xlarge")
+            @helper.inputText(form("name"), 'class -> "input-xlarge", '_help -> "")
             @helper.inputText(form("email"), 'class -> "input-xlarge", '_help -> "Please use a real email address so we can respond to your inquiry.")
-            @helper.inputText(form("subject"), 'class -> "input-xlarge")
-            @helper.textarea(form("message"), 'class -> "input-xlarge")
+            @helper.inputText(form("subject"), 'class -> "input-xlarge", '_help -> "")
+            @helper.textarea(form("message"), 'class -> "input-xlarge", '_help -> "")
             <div class="form-actions">
                 <button class="btn btn-primary" type="submit">Send</button>
                 <button class="btn btn-inverse" type="reset">Cancel</button>

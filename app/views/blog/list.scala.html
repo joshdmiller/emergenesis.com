@@ -43,22 +43,7 @@
 </section>-->
 
 <section class="blog-posts">
-    @posts.map { post =>
-        <div class="blog-post">
-            <h2><a href="@routes.Blog.show(post.slug)">@post.title</a></h2>
-            <div class="byline">
-                posted by <span class="author">@post.author</span> on <span class="date">@post.modified_at.format("dd MMMM YYYY")</span>
-            </div>
-            <div class="body">
-                <p>
-                    @helper.markdown(post.body, true)
-                </p>
-            </div>
-            <div class="readmore">
-                <a href="@routes.Blog.show(post.slug)">Continue reading &raquo;</a>
-            </div>
-        </div>
-    }
+    @posts.map { post => @helper.post(post, true, false) }
 </section>
 
 <section class="pagination">

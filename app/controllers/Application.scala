@@ -8,11 +8,16 @@ import play.api.data.Forms._
 
 import jp.t2v.lab.play20.auth.LoginLogout
 import models._
+import se.radley.plugin.salat.Formats._
+import com.mongodb.casbah.Imports.MongoDBObject
 
 object Application extends Controller with LoginLogout with Authentication {
   
   def index = Action {
-    Ok(views.html.index())
+    val posts = Post.find(ref = MongoDBObject("is_published" -> true))
+      .sort(orderBy = MongoDBObject("modified_at" -> -1))
+      .limit(1)
+    Ok(views.html.index(posts))
   }
 
   def about = Action {
