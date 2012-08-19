@@ -1,4 +1,4 @@
-@(form: Form[Message])
+@(form: Form[Message])(implicit flash: Flash)
 
 @import helpers.Bootstrap._
 
@@ -55,13 +55,12 @@
       </div>
     }
     
-    @form.globalError.map { success =>
-      <div class="alert alert-success">
-        @success.message
-      </div>
+    @flash.get("success").map { message =>
+        <div class="alert alert-success">
+            @message
+        </div>
     }
-
-
+    
     @helper.form(action = routes.Application.sendemail, 'class -> "form-horizontal") {
         <fieldset>
             @helper.inputText(form("name"), 'class -> "input-xlarge")
