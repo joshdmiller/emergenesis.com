@@ -2374,8 +2374,7 @@ a:hover {
   z-index: 100;
 }
 .nav-social {
-  margin: 0;
-  float: right;
+  margin: -40px 0 40px 0;
   list-style: none;
 }
 .nav-social li {

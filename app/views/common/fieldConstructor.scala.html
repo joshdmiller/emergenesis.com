@@ -4,7 +4,11 @@
     <label class="control-label" for="@elements.id">@elements.label</label>
     <div class="controls">
         @elements.input
+        @if(elements.infos.length > 0) {
         <p class="help-block">@elements.infos.mkString(", ")</p>
+        }
+        @if(elements.errors.length > 0) {
         <span class="help-inline">@elements.errors.mkString(", ")</span>
+        }
     </div>
 </div>

@@ -8,6 +8,9 @@ GET     /about                      controllers.Application.about
 GET     /contact                    controllers.Application.contact
 GET     /projects                   controllers.Application.projects
 
+# Submit Email Form
+POST    /contact                    controllers.Application.sendemail
+
 # Blog Administration
 GET     /blog/new                   controllers.Blog.add
 POST    /blog/submit                controllers.Blog.submit

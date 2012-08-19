@@ -1,0 +1,79 @@
+@(form: Form[Message])
+
+@import helpers.Bootstrap._
+
+@main("Get in Touch") {
+
+<section>
+    <h1>Get In Touch</h1>
+</section>
+
+<section>
+    <div class="row">
+        <div class="span3">
+            <ul class="nav nav-social">
+                <li><a href="http://gplus.to/emergenesis"><i class="icon-social-gplus"></i> Google+</a></li>
+                <li><a href="http://www.facebook.com/emergenesis"><i class="icon-social-facebook"></i> Facebook</a></li>
+        </div>
+        <div class="span3">
+            <ul class="nav nav-social">
+                <li><a href="http://www.twitter.com/emergenesis"><i class="icon-social-twitter"></i> Twitter</a></li>
+                <li><a href="http://www.youtube.com/emergenesis"><i class="icon-social-youtube"></i> Youtube</a></li>
+            </ul>
+        </div>
+        <div class="span3">
+            <ul class="nav nav-social">
+                <li><a href="http://www.flickr.com/photos/emergenesis"><i class="icon-social-flickr"></i> Flickr</a></li>
+                <li><a href="http://www.github.com/emergenesis"><i class="icon-social-github"></i> Github</a></li>
+            </ul>
+        </div>
+        <div class="span3">
+            <ul class="nav nav-social">
+                <li><a href="@routes.Blog.feed()"><i class="icon-social-rss"></i> RSS</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <p>
+        We are all about openness. All of our projects are open-source,
+        built on open standards with open data. We develop in the open
+        and kick ideas around out in the open.
+    </p>
+    <p>
+        Have an idea you want to toss about?  Need help with one of our
+        projects? Want to track our progress? Join our inner circle or 
+        send us an email using the form below.
+    </p>
+</section>
+
+<section>
+    <h2>Send Us an Email</h2>
+
+    @form.globalError.map { error =>
+      <div class="alert alert-error">
+        @error.message
+      </div>
+    }
+    
+    @form.globalError.map { success =>
+      <div class="alert alert-success">
+        @success.message
+      </div>
+    }
+
+
+    @helper.form(action = routes.Application.sendemail, 'class -> "form-horizontal") {
+        <fieldset>
+            @helper.inputText(form("name"), 'class -> "input-xlarge")
+            @helper.inputText(form("email"), 'class -> "input-xlarge", '_help -> "Please use a real email address so we can respond to your inquiry.")
+            @helper.inputText(form("subject"), 'class -> "input-xlarge")
+            @helper.textarea(form("message"), 'class -> "input-xlarge")
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Send</button>
+                <button class="btn btn-inverse" type="reset">Cancel</button>
+            </div>
+        </fieldset>
+    }
+</section>
+
+}

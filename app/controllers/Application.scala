@@ -9,6 +9,8 @@ import play.api.data.Forms._
 import jp.t2v.lab.play20.auth.LoginLogout
 import models._
 
+case class Message(email: String, name: String, subject: String, message: String)
+
 object Application extends Controller with LoginLogout with Authentication {
   
   def index = Action {
@@ -62,6 +64,25 @@ object Application extends Controller with LoginLogout with Authentication {
     )
   }
   
+  val emailForm = Form(
+    mapping(
+      "email" -> email,
+      "name" -> text,
+      "subject" -> text,
+      "message" -> text
+    )(Message.apply)(Message.unapply)
+  )
   
-  def contact = TODO
+  def contact = Action { implicit request =>
+    Ok(views.html.contact(emailForm))
+  }
+
+  def sendemail = Action { implicit request =>
+    emailForm.bindFromRequest.fold(
+      formWithErrors => BadRequest(views.html.contact(formWithErrors)),
+      message => {
+        Redirect(routes.Application.contact).flashing("success" -> "Message sent!a")
+      }
+    )
+  }
 }
