@@ -2374,8 +2374,11 @@ a:hover {
   z-index: 100;
 }
 .nav-social {
-  margin: -40px 0 40px 0;
+  margin: 0;
   list-style: none;
+}
+.nav-social.contact {
+  margin: -40px 0 40px 0;
 }
 .nav-social li {
   margin: 5px 0;
@@ -2540,6 +2543,9 @@ h2 {
   }
 }
 @media (max-width: 480px) {
+  .nav-collapse {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
   .page-header h1 small {
     display: block;
     line-height: 28px;
@@ -2842,6 +2848,22 @@ h2 {
   }
 }
 @media (max-width: 979px) {
+  .carousel .carousel-control {
+    display: none;
+  }
+  /*.carousel-caption {
+          h4 {
+              white-space: nowrap;
+              display: block;
+              text-overflow: ellipsis;
+              overflow: hidden;
+          }
+          p {
+            display: none;
+          }
+      }*/
+}
+@media (max-width: 979px) {
   .nav-floater {
     position: static;
     margin-right: auto;
@@ -2860,33 +2882,14 @@ h2 {
   .nav-floater .dropdown-toggle {
     display: block;
     float: none;
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
   }
   .nav-floater .dropdown-menu {
     position: static;
     float: none;
     overflow: hidden;
-    display: block;
-    margin-top: 0;
-    border-top-left-radius: 0 !important;
-    border-top-right-radius: 0 !important;
   }
   .nav-floater .dropdown-menu li {
     text-align: center;
+    float: none;
   }
-  .carousel .carousel-control {
-    display: none;
-  }
-  /*.carousel-caption {
-          h4 {
-              white-space: nowrap;
-              display: block;
-              text-overflow: ellipsis;
-              overflow: hidden;
-          }
-          p {
-            display: none;
-          }
-      }*/
 }
