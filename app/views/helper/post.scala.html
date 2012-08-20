@@ -18,8 +18,10 @@
             @helper.markdown(post.body, truncate)
         </p>
     </div>
+    @if(truncate) {
     <div class="readmore">
         <a href="@routes.Blog.show(post.slug)">Continue reading &raquo;</a>
     </div>
+    }
 </div>
 
