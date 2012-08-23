@@ -23,7 +23,7 @@
         
         <div class="container">
             <div class="brand">
-                <a href="@routes.Application.index">
+                <a href="@routes.Application.index()">
                     <img src="@routes.Assets.at("images/emergenesis_logo.png")" alt="emergenesis" />
                 </a>
             </div>
@@ -37,9 +37,9 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="@routes.Application.index()">Home</a></li>
-                    <li><a href="@routes.Application.projects()">What We're Doing</a></li>
                     <li><a href="@routes.Blog.list(1)">Our Blog</a></li>
                     <li><a href="@routes.Application.about">Who We Are</a></li>
+                    <li><a href="@routes.Application.projects()">What We're Doing</a></li>
                     <li><a href="@routes.Application.contact">Get in Touch</a></li>
                     <li class="divider"></li>
                     <li><a href="http://www.github.com/emergenesis">Github</a></li>

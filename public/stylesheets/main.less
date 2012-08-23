@@ -267,6 +267,7 @@ section:last-child {
 h1, h2, h3, h4 {
     margin-bottom: 20px;
     text-align: center;
+    font-weight: normal;
 }
 
 h1 {
@@ -289,13 +290,19 @@ h2 {
     font-size: 22px;
 }
 
+.inline-header {
+    font-weight: bold;
+    text-decoration: underline;
+    margin-right: 10px;
+}
+
 
 // Blog
 // ----
 
 .blog-post {
     h2 {
-        margin-bottom: 0;
+        margin: 30px 0 0 0;
     }
 
     .byline {
@@ -323,7 +330,8 @@ h2 {
 
     .blog-post:last-child {
         border-bottom: none;
-        margin-bottom: 100px;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
     }
 }
 
