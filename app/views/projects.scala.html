@@ -10,8 +10,42 @@
     </h2>
 
     <p>
-        Citeplasm aims to be a best-in-class research and collaboration tool for academic professionals and students.
+        Citeplasm aims to be a best-in-class research and collaboration tool for 
+        academic professionals and students.
     </p>
+
+    <div id="citeplasmChart"></div>
+    <style>
+        path.link {
+          fill: none;
+          stroke: #7D9C9F;
+          stroke-width: 3px;
+        }
+
+        circle {
+          fill: #AD235E;
+        }
+
+        text {
+          font: 10px sans-serif;
+          pointer-events: none;
+        }
+
+        text.shadow {
+          stroke: #fff;
+          stroke-width: 3px;
+          stroke-opacity: .8;
+        }
+    </style>
+
+    <script src="@routes.Assets.at("/javascripts/citeplasm_nodes_demo.js")">
+    </script>
+
+    <p>
+        The core feature of Citeplasm is its knowledge graph, a small sample of
+        which is depicted in the simplified, force-directed plot above. The
+        graph is interactive; you can hover your mouse over the nodes to see
+        topics and vertices to see the relationships between them.
 
     <p>
         Citeplasm leverages our <a href="#elodi">Linked Open Data
