@@ -5,12 +5,13 @@
 
 // Variables & Mixins
 // ------------------
+@import "bootstrap/variables.less";
 @import "variables.less";
-@import "mixins.less";
 
 
 // Includes
 // ------------------
+@import "bootstrap/mixins.less";
 @import "bootstrap/reset.less";
 @import "bootstrap/type.less";
 @import "bootstrap/buttons.less";
@@ -21,6 +22,8 @@
 @import "bootstrap/accordion.less";
 @import "bootstrap/forms.less";
 @import "bootstrap/alerts.less";
+@import "bootstrap/modals.less";
+@import "bootstrap/close.less";
 @import "bootstrap/component-animations.less";
 @import "sprites.less";
 @import "carousel.less";
@@ -338,6 +341,77 @@ h2 {
 .pagination {
     padding-top: 20px;
     border-top: 1px solid @grayLighter;
+}
+
+// Citeplasm Visualizations
+// ------------------------
+
+.citeplasmChart {
+    margin: 20px 0;
+
+    > p {
+        text-align: center;
+    }
+
+    &.active {
+        border: 1px solid @grayLighter;
+    }
+    
+    .hover {
+        .vcircle {
+            fill: #CDA3BE;
+        }
+
+        .vlabel {
+            fill: @grayLighter;
+        }
+
+        .edge {
+            stroke: #eee;
+        }
+
+        .vertex.active {
+            .vcircle {
+                fill: @fuschia;
+            }
+
+            .vlabel {
+                fill: @textColor;
+            }
+        }
+
+        .edge.active {
+            stroke: #7D9C9F;
+        }
+    }
+
+    .edge {
+        .transition(stroke .15s linear);
+        fill: none;
+        stroke: #7D9C9F;
+        stroke-width: 3px;
+    }
+
+    .vcircle {
+        .transition(fill .15s linear);
+        stroke: none;
+        fill: @fuschia;
+    }
+
+    .vlabel {
+        .transition(fill .15s linear);
+        fill: @textColor;
+        font-size: 10px;
+    }
+
+    .modal-header {
+        h3 {
+            text-align: left;
+        }
+        .close {
+            font-size: 30px;
+        }
+    }
 }
 
 

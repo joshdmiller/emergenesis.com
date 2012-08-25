@@ -14,29 +14,20 @@
         academic professionals and students.
     </p>
 
-    <div id="citeplasmChart"></div>
-    <style>
-        path.link {
-          fill: none;
-          stroke: #7D9C9F;
-          stroke-width: 3px;
-        }
-
-        circle {
-          fill: #AD235E;
-        }
-
-        text {
-          font: 10px sans-serif;
-          pointer-events: none;
-        }
-
-        text.shadow {
-          stroke: #fff;
-          stroke-width: 3px;
-          stroke-opacity: .8;
-        }
-    </style>
+    <div class="citeplasmChart">
+        <p><a class="btn btn-primary">Start the Visualization</a></p>
+        
+        <!-- Modal -->
+        <div class="modal fade in hide" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 class="modalLabel">Modal header</h3>
+            </div>
+            <div class="modal-body">
+                <p>One fine body…</p>
+            </div>
+        </div>
+    </div>
 
     <script src="@routes.Assets.at("/javascripts/citeplasm_nodes_demo.js")">
     </script>
