@@ -103,8 +103,10 @@ data =
 
 graph_width         = 700
 graph_height        = 400
-vertex_radius       = 10
+vertex_max_radius   = 20
+vertex_min_radius   = 5
 
+max_weight = min_weight = 1
 vis = graph = edges = vertices = info = null
 edgeIndex = []
 
@@ -158,13 +160,16 @@ start_visualization = () ->
     # Create the force-directed graph.
     graph = d3.layout.force()
         .charge(-500)
-        .linkDistance(vertex_radius * 10)
+        .linkDistance(vertex_max_radius * 5)
         .gravity(.1)
         .size([graph_width,graph_height])
         .nodes(data.vertices)
         .links(data.edges)
         .on("tick", graph_tick)
         .start()
+
+    for v in data.vertices
+        max_weight = v.weight if v.weight > max_weight
 
     # Draw all of the edges from the data.
     edges = vis.selectAll("line.link")
@@ -187,15 +192,18 @@ start_visualization = () ->
     # Add a circle to the vertices to act as the node.
     vertices.append("svg:circle")
         .attr("class", "vcircle")
-        .attr("x", vertex_radius / -2)
-        .attr("y", vertex_radius / -2)
-        .attr("r", vertex_radius)
+        .attr("r", (v) -> 
+            v.weight / max_weight * (vertex_max_radius - vertex_min_radius) + vertex_min_radius
+        )
         .attr("title", (v) -> v.label)
         
     # Add a text label to the vertices.
     vertices.append("svg:text")
         .attr("class", "vlabel")
-        .attr("dx", vertex_radius + 5)
+        .attr("dx", (v, i) ->
+            n = parseFloat(d3.select(this.parentNode).select("circle").attr("r"))
+            n + 5.0
+        )
         .attr("dy", 5)
         .text (v) -> return v.label
 
