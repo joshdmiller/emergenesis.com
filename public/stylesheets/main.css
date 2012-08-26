@@ -3055,6 +3055,9 @@ h2 {
 .citeplasmChart.active {
   border: 1px solid #eeeeee;
 }
+.citeplasmChart svg {
+  margin-bottom: -10px;
+}
 .citeplasmChart .hover .vcircle {
   fill: #CDA3BE;
 }

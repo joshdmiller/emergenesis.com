@@ -114,16 +114,18 @@ graph_tick = (v) ->
     data.vertices[0].x = graph_width / 2
     data.vertices[0].y = graph_height / 2
 
+    vertices.attr "transform", (v) -> 
+        r = parseInt(d3.select(this.parentNode).select("circle").attr("r"))
+        x = Math.max(r, Math.min(graph_width - r, v.x))
+        y = Math.max(r, Math.min(graph_height - r, v.y))
+        v.x = x
+        v.y = y
+        "translate(" + x + "," + y + ")"
+
     edges.attr "x1", (e) -> e.source.x
     edges.attr "x2", (e) -> e.target.x
     edges.attr "y1", (e) -> e.source.y
     edges.attr "y2", (e) -> e.target.y
-
-    #vertices.attr "cx", (v) -> v.x
-    #vertices.attr "cy", (v) -> v.y
-
-    vertices.attr "transform", (v) -> 
-        return "translate(" + v.x + "," + v.y + ")"
 
 is_node_connected = (n1, n2) ->
     return edgeIndex[n1.index + "," + n2.index] || edgeIndex[n2.index + "," + n1.index] || n1.index == n2.index
@@ -216,6 +218,7 @@ start_visualization = () ->
 # Start the visualization when the button is clicked.
 $(document).ready () ->
     chart = $(".citeplasmChart")
+    graph_width = chart.parent().width() - 2
     $("> p > a.btn", chart).click () ->
         $("> p", chart).remove()
         chart.addClass("active")

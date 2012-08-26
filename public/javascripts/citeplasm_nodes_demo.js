@@ -127,6 +127,15 @@ edgeIndex = [];
 graph_tick = function(v) {
   data.vertices[0].x = graph_width / 2;
   data.vertices[0].y = graph_height / 2;
+  vertices.attr("transform", function(v) {
+    var r, x, y;
+    r = parseInt(d3.select(this.parentNode).select("circle").attr("r"));
+    x = Math.max(r, Math.min(graph_width - r, v.x));
+    y = Math.max(r, Math.min(graph_height - r, v.y));
+    v.x = x;
+    v.y = y;
+    return "translate(" + x + "," + y + ")";
+  });
   edges.attr("x1", function(e) {
     return e.source.x;
   });
@@ -136,11 +145,8 @@ graph_tick = function(v) {
   edges.attr("y1", function(e) {
     return e.source.y;
   });
-  edges.attr("y2", function(e) {
+  return edges.attr("y2", function(e) {
     return e.target.y;
-  });
-  return vertices.attr("transform", function(v) {
-    return "translate(" + v.x + "," + v.y + ")";
   });
 };
 
@@ -219,6 +225,7 @@ start_visualization = function() {
 $(document).ready(function() {
   var chart;
   chart = $(".citeplasmChart");
+  graph_width = chart.parent().width() - 2;
   return $("> p > a.btn", chart).click(function() {
     $("> p", chart).remove();
     chart.addClass("active");
